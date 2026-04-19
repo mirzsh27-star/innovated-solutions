@@ -1,0 +1,6 @@
+# Intermediate body chunk files (not needed in deployment)
+body-*.html
+chunk-*.html
+fix-patch-*.html
+svc-template-head.html
+svc-template-foot.html
