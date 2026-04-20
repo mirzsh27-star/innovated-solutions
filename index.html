@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Innovated Solutions Pty Ltd — Integrated Professional Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet"/>
+<style>
+
+/* ═══════════════════════════════════════════════
+   RESET & CUSTOM PROPERTIES
+═══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* Core dark palette */
+  --ink:       #060C1A;
+  --ink-m:     #0E1628;
+  --ink-l:     #162040;
+
+  /* Accent colours */
+  --blue:      #2563EB;
+  --blue-l:    #3B82F6;
+  --blue-d:    #1D4ED8;
+  --teal:      #06B6D4;
+  --teal-l:    #22D3EE;
+  --purple:    #7C3AED;
+
+  /* Surfaces */
+  --slate:     #F1F5F9;
+  --slate-d:   #E2E8F0;
+  --white:     #FFFFFF;
+
+  /* Text */
+  --text:      #1E2A3B;
+  --muted:     #64748B;
+  --muted-l:   #94A3B8;
+
+  /* Borders */
+  --bdr:         rgba(37,99,235,0.10);
+  --bdr-s:       rgba(37,99,235,0.22);
+  --bdr-white:   rgba(255,255,255,0.07);
+  --bdr-white-s: rgba(255,255,255,0.14);
+
+  /* Gradients */
+  --grad-dark:   linear-gradient(145deg,#060C1A 0%,#0E1628 50%,#0A1528 100%);
+  --grad-accent: linear-gradient(135deg,#2563EB 0%,#06B6D4 100%);
+  --grad-hero:   linear-gradient(145deg,#060C1A 0%,#0F1E3D 55%,#082040 100%);
+
+  /* Shadows */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,.12);
+  --shadow-md:   0 4px 16px rgba(0,0,0,.12);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.10);
+  --shadow-card: 0 4px 24px rgba(6,12,26,.07);
+  --shadow-hover:0 16px 48px rgba(37,99,235,.20);
+  --shadow-blue: 0 8px 32px rgba(37,99,235,.32);
+
+  /* Layout */
+  --radius:    14px;
+  --radius-sm: 8px;
+  --radius-lg: 22px;
+  --max-w:     1120px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--slate)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+nav{
+  background:rgba(6,12,26,0.94);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--bdr-white);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+  position:sticky;top:0;z-index:500;gap:1rem;
+}
+.logo{
+  font-family:'Fraunces',serif;
+  font-size:1.2rem;font-weight:300;
+  color:#fff;letter-spacing:-.01em;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;line-height:1.2;
+}
+.logo em{
+  font-style:italic;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.logo span{
+  display:block;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.57rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);margin-top:-1px;
+  -webkit-text-fill-color:rgba(255,255,255,.28);
+}
+.nav-links{display:flex;gap:0;list-style:none;flex:1;justify-content:center}
+.nav-item{position:relative}
+.nav-btn{
+  background:none;border:none;
+  color:rgba(255,255,255,.55);
+  font-size:.775rem;letter-spacing:.02em;font-weight:500;
+  cursor:pointer;padding:.5rem 1rem;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  transition:color .2s;
+  display:flex;align-items:center;gap:.3rem;border-radius:6px;
+}
+.nav-btn:hover,.nav-btn.active{color:#fff;background:rgba(255,255,255,.06)}
+.nav-btn svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .25s}
+.nav-item:hover .nav-btn svg{transform:rotate(180deg)}
+.dropdown{
+  visibility:hidden;opacity:0;
+  position:absolute;top:calc(100% + 10px);left:50%;
+  transform:translateX(-50%) translateY(-6px);
+  background:#0C1528;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;min-width:256px;
+  z-index:600;padding:.5rem;
+  box-shadow:0 24px 64px rgba(0,0,0,.55);
+  transition:opacity .2s,visibility .2s,transform .2s;
+}
+.nav-item:hover .dropdown{visibility:visible;opacity:1;transform:translateX(-50%) translateY(0)}
+.dropdown::before{
+  content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+  width:12px;height:12px;background:#0C1528;
+  border-left:1px solid rgba(255,255,255,.09);border-top:1px solid rgba(255,255,255,.09);
+  rotate:45deg;
+}
+.drop-link{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.6rem .9rem;font-size:.79rem;
+  color:rgba(255,255,255,.52);cursor:pointer;
+  transition:all .15s;white-space:nowrap;
+  border:none;background:none;text-align:left;width:100%;
+  font-family:'Plus Jakarta Sans',sans-serif;border-radius:8px;
+}
+.drop-link:hover{color:#fff;background:rgba(255,255,255,.07)}
+.drop-link-dot{width:5px;height:5px;border-radius:50%;background:var(--blue-l);flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-secondary{
+  background:none;border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.6);
+  padding:.42rem 1rem;font-size:.75rem;letter-spacing:.04em;font-weight:500;
+  cursor:pointer;border-radius:6px;
+  font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;
+}
+.nav-secondary:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.nav-cta{
+  background:var(--blue);color:#fff;border:none;
+  padding:.46rem 1.25rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  cursor:pointer;border-radius:6px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  transition:all .22s;box-shadow:0 0 0 0 rgba(37,99,235,.4);
+}
+.nav-cta:hover{background:var(--blue-l);box-shadow:0 0 0 4px rgba(37,99,235,.25)}
+
+/* ═══════════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════════ */
+.page{display:none}.page.active{display:block}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{
+  min-height:100vh;background:var(--grad-hero);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:7rem 2rem 6rem;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 0%,black 30%,transparent 80%);
+  pointer-events:none;
+}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.hero-orb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,.22),transparent 70%);top:-220px;left:-200px}
+.hero-orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,.16),transparent 70%);bottom:-120px;right:-120px}
+.hero-orb-3{width:380px;height:380px;background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);top:25%;right:8%}
+.hero-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  position:relative;z-index:2;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);
+  padding:.35rem .9rem .35rem .5rem;border-radius:100px;margin-bottom:2rem;
+}
+.hero-badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--teal);
+  animation:pulse-dot 2s infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.4)}}
+.hero-badge span{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.9rem,5.5vw,5rem);
+  font-weight:300;line-height:1.05;
+  color:#fff;margin-bottom:1.5rem;letter-spacing:-.03em;
+}
+.hero h1 em{
+  font-style:italic;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,.44);
+  max-width:480px;margin-bottom:2.5rem;line-height:1.9;font-weight:400;
+}
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.75rem}
+.btn-primary{
+  background:var(--blue);color:#fff;border:none;
+  padding:.9rem 2rem;font-size:.84rem;font-weight:600;letter-spacing:.02em;
+  cursor:pointer;border-radius:var(--radius-sm);
+  font-family:'Plus Jakarta Sans',sans-serif;transition:all .22s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-primary:hover{background:var(--blue-l);transform:translateY(-2px);box-shadow:var(--shadow-blue)}
+.btn-outline{
+  background:transparent;color:#fff;
+  border:1px solid rgba(255,255,255,.2);
+  padding:.9rem 2rem;font-size:.84rem;font-weight:500;
+  cursor:pointer;border-radius:var(--radius-sm);
+  font-family:'Plus Jakarta Sans',sans-serif;transition:all .22s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06)}
+.hero-proof{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.hero-proof-avatars{display:flex}
+.hero-proof-avatars span{
+  width:30px;height:30px;border-radius:50%;
+  border:2px solid var(--ink-m);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;font-weight:700;color:#fff;
+  margin-left:-8px;
+  background:var(--grad-accent);
+}
+.hero-proof-avatars span:first-child{margin-left:0}
+.hero-proof-text{font-size:.8rem;color:rgba(255,255,255,.4)}
+.hero-proof-text strong{color:rgba(255,255,255,.75);font-weight:600}
+
+/* Hero right — floating dashboard */
+.hero-right{display:flex;justify-content:center;align-items:center}
+.hero-dashboard{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;padding:1.5rem;
+  width:100%;max-width:420px;
+  backdrop-filter:blur(16px);
+  box-shadow:0 32px 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-14px)}}
+.dash-header{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;
+}
+.dash-title{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.02em}
+.dash-live{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.65rem;color:var(--teal);font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.dash-live-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse-dot 1.8s infinite}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.9rem}
+.dash-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);
+  border-radius:11px;padding:.875rem;transition:all .25s;
+}
+.dash-card:hover{background:rgba(255,255,255,.09);border-color:rgba(37,99,235,.35)}
+.dash-icon{
+  font-size:1.1rem;margin-bottom:.5rem;display:block;
+  filter:drop-shadow(0 0 6px rgba(37,99,235,.4));
+}
+.dash-label{font-size:.64rem;color:rgba(255,255,255,.35);font-weight:500;margin-bottom:.25rem;letter-spacing:.04em}
+.dash-value{font-size:.88rem;font-weight:700;color:rgba(255,255,255,.88)}
+.dash-footer{
+  background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.22);
+  border-radius:11px;padding:.875rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.dash-footer-text{font-size:.75rem;color:rgba(255,255,255,.55);line-height:1.4}
+.dash-badge{
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--grad-accent);color:#fff;
+  padding:.28rem .7rem;border-radius:100px;flex-shrink:0;
+}
+
+/* ═══════════════════════════════════════════════
+   TRUST BAR
+═══════════════════════════════════════════════ */
+.trust-bar{
+  background:var(--slate);
+  padding:1.1rem 2rem;
+  border-bottom:1px solid var(--bdr);
+}
+.trust-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;justify-content:center;
+}
+.trust-label{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted-l);flex-shrink:0;
+}
+.trust-sep{width:1px;height:22px;background:var(--bdr-s);flex-shrink:0}
+.trust-items{display:flex;gap:1.75rem;flex-wrap:wrap;justify-content:center;align-items:center}
+.trust-item{
+  display:flex;align-items:center;gap:.45rem;
+  font-size:.77rem;font-weight:600;color:var(--muted);
+}
+.trust-item svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════════════════════ */
+.sec-inner{max-width:var(--max-w);margin:0 auto}
+
+.sec-eyebrow{
+  font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.65rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.sec-eyebrow::before{
+  content:'';width:22px;height:2px;flex-shrink:0;
+  background:var(--grad-accent);border-radius:2px;
+}
+.sec-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.9rem,3.5vw,2.9rem);
+  font-weight:300;color:var(--ink);
+  line-height:1.1;margin-bottom:.85rem;letter-spacing:-.025em;
+}
+.sec-title em{
+  font-style:italic;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sec-sub{font-size:.93rem;color:var(--muted);max-width:480px;line-height:1.9}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}
+.reveal-d5{transition-delay:.5s}
+.reveal-d6{transition-delay:.6s}
+
+/* ═══════════════════════════════════════════════
+   STATS BANNER
+═══════════════════════════════════════════════ */
+.stats-banner{
+  background:var(--ink-m);padding:5rem 2rem;
+  position:relative;overflow:hidden;
+}
+.sb-orb-1{
+  position:absolute;width:500px;height:500px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(37,99,235,.14),transparent 70%);
+  top:-150px;left:-100px;filter:blur(60px);
+}
+.sb-orb-2{
+  position:absolute;width:400px;height:400px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(6,182,212,.11),transparent 70%);
+  bottom:-100px;right:-80px;filter:blur(60px);
+}
+.stats-grid{
+  max-width:var(--max-w);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);overflow:hidden;
+  position:relative;z-index:1;
+}
+.stat-item{
+  background:rgba(255,255,255,.02);
+  padding:2.5rem 2rem;text-align:center;
+  transition:background .3s;
+}
+.stat-item:hover{background:rgba(255,255,255,.05)}
+.stat-n{
+  font-family:'Fraunces',serif;
+  font-size:3rem;font-weight:300;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;line-height:1;margin-bottom:.4rem;
+}
+.stat-l{
+  font-size:.7rem;color:rgba(255,255,255,.35);
+  letter-spacing:.16em;text-transform:uppercase;display:block;
+}
+.stat-sub{font-size:.76rem;color:rgba(255,255,255,.22);display:block;margin-top:.25rem;line-height:1.4}
+
+/* ═══════════════════════════════════════════════
+   HOME SERVICES
+═══════════════════════════════════════════════ */
+.home-services{padding:6rem 2rem;background:var(--white)}
+.services-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap;
+}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv-card{
+  background:var(--white);border:1px solid var(--slate-d);
+  border-radius:var(--radius);overflow:hidden;
+  cursor:pointer;transition:all .3s;
+  display:flex;flex-direction:column;
+}
+.srv-card-img{height:175px;position:relative;overflow:hidden}
+.srv-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .55s}
+.srv-card:hover .srv-card-img img{transform:scale(1.07)}
+.srv-card-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 30%,rgba(6,12,26,.68));
+}
+.srv-card-body{padding:1.75rem;flex:1;display:flex;flex-direction:column}
+.srv-num{font-size:.63rem;font-weight:700;letter-spacing:.18em;color:var(--muted-l);text-transform:uppercase;margin-bottom:.85rem}
+.srv-icon-wrap{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(37,99,235,.08);border:1px solid var(--bdr-s);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;transition:all .3s;
+}
+.srv-icon-wrap svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.8;transition:stroke .3s}
+.srv-name{
+  font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;
+  color:var(--ink);margin-bottom:.5rem;line-height:1.3;letter-spacing:-.01em;
+}
+.srv-brief{font-size:.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;flex:1}
+.srv-more{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.srv-more span{font-size:.71rem;font-weight:700;color:var(--blue);letter-spacing:.09em;text-transform:uppercase}
+.srv-arrow{
+  width:30px;height:30px;border-radius:7px;
+  background:var(--slate);display:flex;align-items:center;justify-content:center;transition:all .3s;
+}
+.srv-arrow svg{width:13px;height:13px;stroke:var(--blue);fill:none;stroke-width:2.5;transition:all .3s}
+.srv-card:hover{border-color:var(--blue);box-shadow:var(--shadow-hover);transform:translateY(-4px)}
+.srv-card:hover .srv-icon-wrap{background:var(--blue);border-color:var(--blue)}
+.srv-card:hover .srv-icon-wrap svg{stroke:#fff}
+.srv-card:hover .srv-arrow{background:var(--blue)}
+.srv-card:hover .srv-arrow svg{stroke:#fff;transform:translate(2px,-2px)}
+
+/* ═══════════════════════════════════════════════
+   DIFFERENTIATORS
+═══════════════════════════════════════════════ */
+.diff-section{padding:6rem 2rem;background:var(--slate)}
+.diff-header{text-align:center;margin-bottom:4rem}
+.diff-header .sec-eyebrow{justify-content:center}
+.diff-header .sec-eyebrow::before{display:none}
+.diff-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;max-width:var(--max-w);margin:0 auto;
+}
+.diff-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2rem;border:1px solid var(--bdr);
+  position:relative;overflow:hidden;transition:all .3s;
+}
+.diff-card:hover{box-shadow:var(--shadow-hover);border-color:var(--blue);transform:translateY(-4px)}
+.diff-num{
+  font-family:'Fraunces',serif;font-size:4.5rem;font-weight:300;
+  line-height:1;position:absolute;top:1.25rem;right:1.5rem;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  opacity:.18;pointer-events:none;
+}
+.diff-icon{
+  width:46px;height:46px;border-radius:12px;
+  background:rgba(37,99,235,.09);border:1px solid var(--bdr-s);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;
+}
+.diff-icon svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.diff-title{font-weight:700;color:var(--ink);font-size:.95rem;margin-bottom:.5rem}
+.diff-desc{font-size:.83rem;color:var(--muted);line-height:1.8}
+
+/* ═══════════════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════════════ */
+.how-section{padding:6rem 2rem;background:var(--white)}
+.how-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:2rem;margin-bottom:4rem;flex-wrap:wrap;
+}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--bdr);
+  border:1px solid var(--bdr);border-radius:var(--radius);overflow:hidden;
+}
+.step-item{
+  background:var(--white);padding:2.25rem 1.75rem;
+  position:relative;transition:background .3s;
+}
+.step-item:hover{background:rgba(37,99,235,.025)}
+.step-num{
+  font-family:'Fraunces',serif;font-size:3rem;font-weight:300;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  opacity:.28;line-height:1;margin-bottom:.9rem;
+}
+.step-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(37,99,235,.08);border:1px solid var(--bdr-s);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1rem;
+}
+.step-icon svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2}
+.step-title{font-weight:700;color:var(--ink);font-size:.9rem;margin-bottom:.5rem}
+.step-desc{font-size:.82rem;color:var(--muted);line-height:1.78}
+
+/* ═══════════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════════ */
+.testimonials-section{padding:6rem 2rem;background:var(--slate)}
+.test-header{text-align:center;margin-bottom:4rem}
+.test-header .sec-eyebrow{justify-content:center}
+.test-header .sec-eyebrow::before{display:none}
+.test-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;max-width:var(--max-w);margin:0 auto;
+}
+.test-card{
+  background:var(--white);border:1px solid var(--slate-d);
+  border-radius:var(--radius);padding:2rem;
+  transition:all .3s;
+}
+.test-card:hover{box-shadow:var(--shadow-hover);border-color:var(--blue);transform:translateY(-3px)}
+.test-stars{display:flex;gap:.25rem;margin-bottom:1.25rem}
+.test-star{
+  width:14px;height:14px;
+  background:var(--grad-accent);
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.test-quote-mark{
+  font-family:'Fraunces',serif;
+  font-size:3.5rem;line-height:.5;display:block;
+  margin-bottom:.75rem;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  opacity:.35;
+}
+.test-quote{
+  font-family:'Fraunces',serif;
+  font-size:.975rem;font-weight:300;font-style:italic;
+  color:var(--ink);line-height:1.8;margin-bottom:1.5rem;letter-spacing:-.01em;
+}
+.test-author{
+  display:flex;align-items:center;gap:.85rem;
+  padding-top:1.25rem;border-top:1px solid var(--slate-d);
+}
+.test-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--grad-accent);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:800;color:#fff;flex-shrink:0;
+}
+.test-name{font-size:.875rem;font-weight:700;color:var(--ink)}
+.test-role{font-size:.75rem;color:var(--muted);margin-top:.1rem}
+
+/* ═══════════════════════════════════════════════
+   CTA STRIP
+═══════════════════════════════════════════════ */
+.cta-strip{
+  background:var(--ink);padding:6.5rem 2rem;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-orb-1{
+  position:absolute;width:520px;height:520px;border-radius:50%;pointer-events:none;
+  background:rgba(37,99,235,.16);top:-150px;left:-100px;filter:blur(70px);
+}
+.cta-orb-2{
+  position:absolute;width:420px;height:420px;border-radius:50%;pointer-events:none;
+  background:rgba(6,182,212,.11);bottom:-100px;right:-80px;filter:blur(65px);
+}
+.cta-inner{position:relative;z-index:2;max-width:660px;margin:0 auto}
+.cta-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(37,99,235,.14);border:1px solid rgba(37,99,235,.3);
+  border-radius:100px;padding:.35rem 1rem;
+  font-size:.67rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--blue-l);margin-bottom:1.5rem;
+}
+.cta-strip h2{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:300;
+  color:#fff;margin-bottom:1rem;letter-spacing:-.025em;line-height:1.1;
+}
+.cta-strip h2 em{
+  font-style:italic;
+  background:var(--grad-accent);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.cta-strip p{font-size:.95rem;color:rgba(255,255,255,.38);margin-bottom:2.5rem;line-height:1.85}
+.cta-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap}
+.cta-note{
+  margin-top:1.5rem;font-size:.74rem;
+  color:rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+}
+.cta-note svg{width:12px;height:12px;stroke:rgba(255,255,255,.22);fill:none;stroke-width:2}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer{background:#040811;padding:3.5rem 2rem 2rem;color:rgba(255,255,255,.28)}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+.footer-brand .logo{cursor:default;display:block;margin-bottom:.9rem}
+.footer-brand p{font-size:.8rem;color:rgba(255,255,255,.24);line-height:1.8;max-width:240px}
+.footer-social{display:flex;gap:.6rem;margin-top:1.25rem}
+.footer-social a{
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;text-decoration:none;
+}
+.footer-social a:hover{background:var(--blue);border-color:var(--blue)}
+.footer-social a svg{width:14px;height:14px;stroke:rgba(255,255,255,.45);fill:none;stroke-width:2}
+.footer-social a:hover svg{stroke:#fff}
+.footer-col h4{
+  font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.22);margin-bottom:1rem;
+}
+.footer-col a{
+  display:block;font-size:.8rem;color:rgba(255,255,255,.24);
+  margin-bottom:.55rem;cursor:pointer;transition:color .2s;
+  text-decoration:none;background:none;border:none;
+  font-family:'Plus Jakarta Sans',sans-serif;padding:0;text-align:left;
+}
+.footer-col a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.05);
+  padding-top:1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.footer-bottom-links{display:flex;gap:1.5rem}
+.footer-bottom-links a{
+  font-size:.74rem;color:rgba(255,255,255,.24);
+  cursor:pointer;text-decoration:none;background:none;border:none;
+  font-family:'Plus Jakarta Sans',sans-serif;transition:color .2s;
+}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.6)}
+
+/* ═══════════════════════════════════════════════
+   SERVICE DETAIL PAGE
+═══════════════════════════════════════════════ */
+.svc-hero{background:var(--grad-dark);padding:5rem 2rem 4rem;position:relative;overflow:hidden}
+.svc-hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size:200px;pointer-events:none;
+}
+.svc-orb{
+  position:absolute;width:500px;height:500px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(37,99,235,.18),transparent 70%);
+  right:-100px;top:-100px;filter:blur(60px);
+}
+.svc-hero-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:2}
+.back-btn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);
+  color:rgba(255,255,255,.52);
+  font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
+  cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+  margin-bottom:2rem;transition:all .2s;padding:.45rem .9rem;border-radius:100px;
+}
+.back-btn:hover{color:#fff;background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.24)}
+.back-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5}
+.svc-hero-eyebrow{
+  font-size:.66rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:.75rem;
+}
+.svc-hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,3.5rem);font-weight:300;
+  color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-.025em;
+}
+.svc-hero-desc{font-size:1rem;color:rgba(255,255,255,.42);max-width:580px;line-height:1.9}
+
+.svc-tabs{
+  background:#0C1528;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  padding:0 2rem;overflow-x:auto;
+}
+.svc-tabs-inner{max-width:var(--max-w);margin:0 auto;display:flex;gap:0}
+.svc-tab{
+  background:none;border:none;border-bottom:2px solid transparent;
+  color:rgba(255,255,255,.38);font-size:.78rem;font-weight:500;letter-spacing:.04em;
+  cursor:pointer;padding:1rem 1.25rem;
+  font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;white-space:nowrap;
+}
+.svc-tab:hover{color:rgba(255,255,255,.7)}
+.svc-tab.active{color:#fff;border-bottom-color:var(--blue)}
+
+.svc-body{padding:5rem 2rem;background:var(--slate)}
+.svc-body-inner{max-width:var(--max-w);margin:0 auto}
+.svc-sub-content{display:none}.svc-sub-content.active{display:block}
+
+.img-strip{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr;
+  gap:12px;margin-bottom:4rem;
+  height:340px;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.img-strip img{width:100%;height:100%;object-fit:cover;display:block}
+
+.detail-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+.detail-intro h2{
+  font-family:'Fraunces',serif;
+  font-size:1.85rem;font-weight:400;
+  color:var(--ink);margin-bottom:1rem;letter-spacing:-.02em;line-height:1.2;
+}
+.detail-intro p{font-size:.9rem;color:var(--muted);line-height:1.95;margin-bottom:.9rem}
+
+.services-list-wrap{margin-top:2rem}
+.services-list-title{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.services-list-title::before{content:'';width:18px;height:2px;background:var(--grad-accent);border-radius:2px;flex-shrink:0}
+.sub-list{list-style:none}
+.sub-list li{
+  display:flex;align-items:flex-start;gap:.75rem;
+  font-size:.84rem;color:var(--text);
+  padding:.65rem 0;border-bottom:1px solid var(--slate-d);line-height:1.65;
+}
+.sub-list li:last-child{border-bottom:none}
+.sub-dot{
+  width:18px;height:18px;border-radius:5px;
+  background:rgba(37,99,235,.09);border:1px solid var(--bdr-s);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:.1rem;
+}
+.sub-dot svg{width:9px;height:9px;stroke:var(--blue);fill:none;stroke-width:3}
+
+.why-box{
+  background:var(--ink);border-radius:var(--radius);
+  padding:2.25rem;overflow:hidden;position:relative;
+}
+.why-box-orb{
+  position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(6,182,212,.11),transparent 70%);
+  bottom:-100px;right:-80px;filter:blur(40px);
+}
+.why-box h3{
+  font-family:'Fraunces',serif;font-size:1.25rem;font-weight:400;
+  color:#fff;margin-bottom:1.5rem;position:relative;z-index:1;letter-spacing:-.01em;
+}
+.why-item{display:flex;gap:.9rem;margin-bottom:1.4rem;position:relative;z-index:1}
+.why-item:last-child{margin-bottom:0}
+.why-dot{
+  width:36px;height:36px;border-radius:9px;
+  background:rgba(37,99,235,.18);border:1px solid rgba(37,99,235,.3);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.why-dot svg{width:15px;height:15px;stroke:var(--blue-l);fill:none;stroke-width:2}
+.why-item p{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.75;margin-top:.2rem}
+.why-item strong{color:rgba(255,255,255,.9);font-weight:600;display:block;margin-bottom:.2rem;font-size:.86rem}
+
+.contact-mini{background:var(--white);padding:4.5rem 2rem;border-top:1px solid var(--slate-d)}
+.cm-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.cm-text h3{
+  font-family:'Fraunces',serif;
+  font-size:1.6rem;font-weight:400;color:var(--ink);
+  margin-bottom:.5rem;letter-spacing:-.02em;
+}
+.cm-text p{font-size:.88rem;color:var(--muted);line-height:1.8}
+.cm-actions{display:flex;flex-direction:column;gap:1rem;align-items:flex-end}
+.cm-actions .btn-primary{width:100%;max-width:280px;justify-content:center}
+.btn-outline-dark{
+  width:100%;max-width:280px;justify-content:center;
+  background:transparent;color:var(--ink);border:1px solid var(--slate-d);
+  padding:.9rem 2rem;font-size:.84rem;font-weight:500;
+  cursor:pointer;border-radius:var(--radius-sm);
+  font-family:'Plus Jakarta Sans',sans-serif;transition:all .22s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ═══════════════════════════════════════════════
+   CONTACT PAGE
+═══════════════════════════════════════════════ */
+.contact-body{padding:5rem 2rem;background:var(--slate)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.6fr;
+  gap:2.5rem;max-width:var(--max-w);margin:0 auto;align-items:start;
+}
+.contact-info-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2.25rem;border:1px solid var(--slate-d);
+}
+.contact-info-card h2{
+  font-family:'Fraunces',serif;font-size:1.4rem;font-weight:400;
+  color:var(--ink);margin-bottom:1.25rem;letter-spacing:-.01em;
+}
+.contact-detail{margin-bottom:1.25rem}
+.contact-detail-label{
+  font-size:.63rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted-l);margin-bottom:.3rem;
+}
+.contact-detail-val{font-size:.9rem;color:var(--text)}
+.hours-box{background:var(--ink);border-radius:10px;padding:1.5rem;margin-top:1.5rem}
+.hours-box h4{font-family:'Fraunces',serif;font-size:1rem;color:#fff;margin-bottom:.85rem;font-weight:400}
+.hours-row{
+  display:flex;justify-content:space-between;
+  font-size:.8rem;color:rgba(255,255,255,.38);
+  padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.05);
+}
+.hours-row:last-child{border-bottom:none}
+.hours-day{font-weight:500;color:rgba(255,255,255,.6)}
+.contact-form-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2.75rem;border:1px solid var(--slate-d);
+}
+.contact-form-card h2{
+  font-family:'Fraunces',serif;font-size:1.5rem;font-weight:400;
+  color:var(--ink);margin-bottom:.4rem;letter-spacing:-.015em;
+}
+.contact-form-card>p{font-size:.85rem;color:var(--muted);margin-bottom:2rem;line-height:1.75}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem}
+.form-group label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.form-group input,.form-group select,.form-group textarea{
+  background:var(--slate);border:1px solid var(--slate-d);
+  border-radius:var(--radius-sm);padding:.8rem 1rem;
+  font-size:.875rem;color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--blue);background:#fff;
+  box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+.form-group textarea{resize:none}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-right{display:none}
+  .hero-btns,.hero-proof{justify-content:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .diff-grid{grid-template-columns:1fr 1fr}
+  .test-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .srv-grid{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .detail-grid{grid-template-columns:1fr;gap:2.5rem}
+  .cm-inner{grid-template-columns:1fr}
+  .cm-actions{align-items:flex-start}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .srv-grid,.diff-grid,.test-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .img-strip{grid-template-columns:1fr 1fr;height:auto}
+  .img-strip img:first-child{grid-column:span 2;height:200px}
+  .img-strip img:nth-child(n+2){height:140px}
+  .form-row{grid-template-columns:1fr}
+}
+
+</style>
+
+<!-- ════════════════════════════════════════════════════
+     FIX PATCH 1 — Hero layout · Dashboard widget · Typography
+     Drop this <style> block AFTER the existing <style> in chunk-1
+     to override and refine those rules.
+════════════════════════════════════════════════════ -->
+<style id="fix-patch-1">
+
+/* ── Refined custom properties ── */
+:root {
+  --ink:        #04091A;
+  --ink-m:      #091220;
+  --ink-l:      #112038;
+  --blue:       #2460E8;
+  --blue-l:     #4B7BF5;
+  --blue-d:     #1A49CC;
+  --teal:       #00BAD0;
+  --teal-l:     #1DD4E8;
+  --shadow-blue: 0 8px 28px rgba(36,96,232,.38);
+  --shadow-hover:0 20px 52px rgba(36,96,232,.22);
+  --radius:     16px;
+  --radius-sm:  9px;
+}
+
+/* ── Body baseline ── */
+body { letter-spacing: -.01em; }
+
+/* ══════════════
+   NAV — tighten
+══════════════ */
+nav { height: 64px; }
+.logo { font-size: 1.18rem; }
+.logo span { font-size: .56rem; letter-spacing: .24em; }
+
+/* ══════════════════════════════
+   HERO — refined proportions
+══════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  padding: 6rem 2.5rem 5rem;
+  /* Richer gradient */
+  background: radial-gradient(ellipse 120% 80% at 60% -10%, #0F2258 0%, #04091A 55%),
+              linear-gradient(180deg, #04091A 0%, #07122E 100%);
+}
+
+/* Subtle dot-grid overlay */
+.hero-grid {
+  background-image:
+    radial-gradient(circle, rgba(36,96,232,.18) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 90% 70% at 55% 20%, black 20%, transparent 75%);
+}
+
+/* Orb adjustments */
+.hero-orb-1 { width: 640px; height: 640px; top: -180px; left: -180px;
+  background: radial-gradient(circle, rgba(36,96,232,.18), transparent 68%); }
+.hero-orb-2 { width: 480px; height: 480px; bottom: -80px; right: -80px;
+  background: radial-gradient(circle, rgba(0,186,208,.14), transparent 68%); }
+.hero-orb-3 { width: 340px; height: 340px; top: 28%; right: 6%;
+  background: radial-gradient(circle, rgba(100,60,220,.10), transparent 68%); }
+
+/* Inner grid — better balance */
+.hero-inner {
+  max-width: 1140px;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* ── Left copy ── */
+.hero-badge {
+  background: rgba(36,96,232,.10);
+  border-color: rgba(36,96,232,.25);
+  padding: .38rem 1rem .38rem .6rem;
+  margin-bottom: 1.75rem;
+}
+.hero-badge span { color: rgba(255,255,255,.6); letter-spacing: .14em; }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  line-height: 1.06;
+  letter-spacing: -.035em;
+  margin-bottom: 1.35rem;
+}
+
+.hero-sub {
+  font-size: .975rem;
+  line-height: 1.95;
+  color: rgba(255,255,255,.42);
+  max-width: 460px;
+  margin-bottom: 2.25rem;
+  letter-spacing: .005em;
+}
+
+.hero-btns { gap: .8rem; margin-bottom: 2.5rem; }
+
+.btn-primary {
+  padding: .85rem 1.85rem;
+  font-size: .83rem;
+  letter-spacing: .025em;
+  border-radius: 9px;
+  font-weight: 700;
+}
+.btn-outline {
+  padding: .85rem 1.85rem;
+  font-size: .83rem;
+  border-radius: 9px;
+  border-color: rgba(255,255,255,.18);
+}
+.btn-outline:hover { border-color: rgba(255,255,255,.45); }
+
+.hero-proof-text { font-size: .78rem; }
+
+/* ── Right: floating dashboard ── */
+.hero-dashboard {
+  max-width: 400px;
+  border-radius: 22px;
+  padding: 1.35rem;
+  background: rgba(255,255,255,.038);
+  border-color: rgba(255,255,255,.09);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.055),
+    0 32px 80px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.dash-header { margin-bottom: 1.1rem; }
+.dash-title { font-size: .76rem; letter-spacing: .03em; color: rgba(255,255,255,.75); }
+
+.dash-grid { gap: .6rem; margin-bottom: .75rem; }
+
+.dash-card {
+  padding: .8rem .9rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,.045);
+  border-color: rgba(255,255,255,.065);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.dash-card:hover { background: rgba(255,255,255,.08); border-color: rgba(36,96,232,.3); }
+
+/* Replace emoji with SVG icon row */
+.dash-card-header {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .45rem;
+}
+.dash-card-dot {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: rgba(36,96,232,.18);
+  border: 1px solid rgba(36,96,232,.25);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.dash-card-dot svg { width: 11px; height: 11px; stroke: #4B7BF5; fill: none; stroke-width: 2; }
+
+.dash-label { font-size: .62rem; color: rgba(255,255,255,.32); letter-spacing: .05em; margin-bottom: .18rem; }
+.dash-value { font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.85); }
+
+.dash-footer {
+  padding: .8rem .95rem;
+  border-radius: 10px;
+  border-color: rgba(36,96,232,.18);
+  background: rgba(36,96,232,.08);
+}
+.dash-footer-text { font-size: .72rem; }
+
+/* ══════════════════════════════
+   TRUST BAR
+══════════════════════════════ */
+.trust-bar { padding: 1rem 2rem; }
+.trust-item { font-size: .75rem; font-weight: 600; color: #64748B; gap: .4rem; }
+.trust-item svg { stroke: #2460E8; }
+
+/* ══════════════════════════════
+   SECTION TYPOGRAPHY
+══════════════════════════════ */
+.sec-eyebrow { font-size: .64rem; letter-spacing: .24em; }
+.sec-title { font-size: clamp(1.85rem, 3.2vw, 2.75rem); letter-spacing: -.028em; line-height: 1.08; }
+.sec-sub { font-size: .91rem; line-height: 1.92; color: #6B7A96; }
+
+/* ══════════════════════════════
+   STATS BANNER — stronger look
+══════════════════════════════ */
+.stats-banner {
+  background: linear-gradient(160deg, #050D1E 0%, #0A1830 100%);
+  padding: 4.5rem 2rem;
+}
+.stat-item { padding: 2.25rem 1.75rem; }
+.stat-n { font-size: 2.8rem; }
+.stat-l { font-size: .67rem; letter-spacing: .18em; }
+.stat-sub { font-size: .73rem; color: rgba(255,255,255,.2); margin-top: .3rem; }
+
+/* ══════════════════════════════
+   SERVICE CARDS
+══════════════════════════════ */
+.home-services { padding: 5.5rem 2rem; }
+
+.srv-grid { gap: 1.25rem; }
+
+.srv-card {
+  border-radius: 16px;
+  border-color: #E8EDF5;
+  box-shadow: 0 2px 8px rgba(4,9,26,.05);
+  transition: all .32s cubic-bezier(.22,.68,0,1.2);
+}
+.srv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 52px rgba(36,96,232,.16), 0 0 0 1px rgba(36,96,232,.15);
+  border-color: rgba(36,96,232,.25);
+}
+
+.srv-card-img { height: 168px; }
+.srv-card-img-overlay {
+  background: linear-gradient(to bottom, transparent 20%, rgba(4,9,26,.72));
+}
+
+.srv-card-body { padding: 1.6rem 1.6rem 1.5rem; }
+.srv-num { font-size: .61rem; letter-spacing: .2em; margin-bottom: .75rem; color: #94A3B8; }
+.srv-icon-wrap {
+  width: 40px; height: 40px; border-radius: 9px;
+  background: rgba(36,96,232,.07);
+  border-color: rgba(36,96,232,.18);
+  margin-bottom: .85rem;
+}
+.srv-name { font-size: 1rem; margin-bottom: .4rem; line-height: 1.28; }
+.srv-brief { font-size: .8rem; line-height: 1.82; color: #6B7A96; margin-bottom: 1.35rem; }
+.srv-more span { font-size: .69rem; letter-spacing: .1em; }
+
+/* ══════════════════════════════
+   DIFFERENTIATORS
+══════════════════════════════ */
+.diff-section { padding: 5.5rem 2rem; background: #F7F9FC; }
+.diff-grid { gap: 1.25rem; }
+.diff-card {
+  padding: 1.85rem;
+  border-radius: 16px;
+  border-color: #E2E8F2;
+  box-shadow: 0 2px 8px rgba(4,9,26,.04);
+}
+.diff-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(36,96,232,.14), 0 0 0 1px rgba(36,96,232,.14);
+}
+.diff-title { font-size: .93rem; letter-spacing: -.01em; margin-bottom: .45rem; }
+.diff-desc { font-size: .81rem; line-height: 1.82; color: #6B7A96; }
+.diff-num { font-size: 4rem; top: 1.1rem; right: 1.4rem; opacity: .15; }
+
+/* ══════════════════════════════
+   HOW IT WORKS
+══════════════════════════════ */
+.how-section { padding: 5.5rem 2rem; }
+.step-item { padding: 2.1rem 1.6rem; }
+.step-title { font-size: .88rem; letter-spacing: -.01em; margin-bottom: .45rem; }
+.step-desc { font-size: .8rem; line-height: 1.78; color: #6B7A96; }
+
+/* ══════════════════════════════
+   TESTIMONIALS
+══════════════════════════════ */
+.testimonials-section { padding: 5.5rem 2rem; background: #F7F9FC; }
+.test-grid { gap: 1.25rem; }
+.test-card {
+  padding: 1.85rem;
+  border-radius: 16px;
+  border-color: #E2E8F2;
+  box-shadow: 0 2px 8px rgba(4,9,26,.04);
+}
+.test-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(36,96,232,.13);
+}
+.test-quote { font-size: .94rem; line-height: 1.82; color: #1E2A3B; }
+.test-quote-mark { font-size: 3rem; opacity: .3; }
+.test-name { font-size: .84rem; }
+.test-role { font-size: .72rem; color: #94A3B8; }
+
+/* ══════════════════════════════
+   CTA STRIP
+══════════════════════════════ */
+.cta-strip {
+  padding: 6rem 2rem;
+  background: linear-gradient(160deg, #04091A 0%, #0A1830 100%);
+}
+.cta-strip h2 { font-size: clamp(1.9rem, 3.8vw, 3rem); letter-spacing: -.03em; }
+.cta-strip p { font-size: .92rem; color: rgba(255,255,255,.36); }
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer { background: #030710; }
+.footer-brand p { font-size: .78rem; line-height: 1.82; color: rgba(255,255,255,.22); }
+.footer-col a { font-size: .78rem; color: rgba(255,255,255,.22); }
+.footer-col a:hover { color: rgba(255,255,255,.65); }
+
+/* ══════════════════════════════
+   SERVICE DETAIL PAGE
+══════════════════════════════ */
+.svc-hero {
+  background: linear-gradient(155deg, #04091A 0%, #0C1A38 60%, #091428 100%);
+}
+.svc-hero h1 { font-size: clamp(1.9rem, 3.8vw, 3.3rem); letter-spacing: -.03em; }
+.svc-hero-desc { font-size: .96rem; color: rgba(255,255,255,.4); line-height: 1.92; }
+
+.detail-intro h2 { font-size: 1.75rem; letter-spacing: -.025em; line-height: 1.18; }
+.detail-intro p { font-size: .88rem; line-height: 1.95; color: #64748B; }
+.sub-list li { font-size: .82rem; color: #374151; line-height: 1.68; }
+
+.why-box { border-radius: 16px; }
+.why-item strong { font-size: .84rem; }
+.why-item p { font-size: .8rem; color: rgba(255,255,255,.4); }
+
+/* ══════════════════════════════
+   CONTACT PAGE
+══════════════════════════════ */
+.contact-info-card h2 { font-size: 1.35rem; letter-spacing: -.015em; }
+.contact-form-card h2 { font-size: 1.45rem; letter-spacing: -.02em; }
+.contact-detail-val { font-size: .88rem; }
+.form-group input, .form-group select, .form-group textarea {
+  font-size: .85rem;
+  border-radius: 9px;
+  padding: .78rem 1rem;
+}
+.form-group label { font-size: .63rem; letter-spacing: .16em; color: #64748B; }
+
+/* ══════════════════════════════
+   GLOBAL BUTTON REFINEMENTS
+══════════════════════════════ */
+.btn-primary:active { transform: translateY(0); }
+
+.btn-primary,
+.nav-cta {
+  background: #2460E8;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.btn-primary:hover,
+.nav-cta:hover { background: #4B7BF5; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════ -->
+<nav>
+  <div class="logo" onclick="showPage('home')">
+    <em>Innovated</em> Solutions
+    <span>Pty Ltd · Sydney, Australia</span>
+  </div>
+
+  <ul class="nav-links">
+    <li class="nav-item">
+      <button class="nav-btn" onclick="showPage('home')">Home</button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-btn">Financial <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('financial','corporate')"><span class="drop-link-dot"></span>Corporate Accounting &amp; Compliance</button>
+        <button class="drop-link" onclick="showService('financial','bookkeeping')"><span class="drop-link-dot"></span>Cloud Bookkeeping</button>
+        <button class="drop-link" onclick="showService('financial','tax')"><span class="drop-link-dot"></span>Australian Tax &amp; BAS</button>
+        <button class="drop-link" onclick="showService('financial','payroll')"><span class="drop-link-dot"></span>Payroll &amp; SuperStream</button>
+        <button class="drop-link" onclick="showService('financial','ndis-billing')"><span class="drop-link-dot"></span>NDIS Billing</button>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-btn">Technology <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('technology','web-dev')"><span class="drop-link-dot"></span>Web &amp; App Development</button>
+        <button class="drop-link" onclick="showService('technology','maintenance')"><span class="drop-link-dot"></span>Website Maintenance</button>
+        <button class="drop-link" onclick="showService('technology','helpdesk')"><span class="drop-link-dot"></span>IT Help Desk &amp; Support</button>
+        <button class="drop-link" onclick="showService('technology','cloud')"><span class="drop-link-dot"></span>Cloud &amp; Cybersecurity</button>
+        <button class="drop-link" onclick="showService('technology','ai')"><span class="drop-link-dot"></span>AI &amp; Automation</button>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-btn">Engineering <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('engineering','architecture')"><span class="drop-link-dot"></span>Architectural Design</button>
+        <button class="drop-link" onclick="showService('engineering','survey')"><span class="drop-link-dot"></span>Land &amp; Topographic Survey</button>
+        <button class="drop-link" onclick="showService('engineering','3d')"><span class="drop-link-dot"></span>3D Modelling &amp; BIM</button>
+        <button class="drop-link" onclick="showService('engineering','structural')"><span class="drop-link-dot"></span>Structural Engineering</button>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-btn">Healthcare <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('healthcare','plan-mgmt')"><span class="drop-link-dot"></span>NDIS Plan Management</button>
+        <button class="drop-link" onclick="showService('healthcare','allied')"><span class="drop-link-dot"></span>Allied Health Billing</button>
+        <button class="drop-link" onclick="showService('healthcare','proda')"><span class="drop-link-dot"></span>PRODA Administration</button>
+        <button class="drop-link" onclick="showService('healthcare','coordination')"><span class="drop-link-dot"></span>Care Coordination Support</button>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-btn">BPO <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('bpo','inbound')"><span class="drop-link-dot"></span>Inbound Sales Call Centre</button>
+        <button class="drop-link" onclick="showService('bpo','customer-care')"><span class="drop-link-dot"></span>Customer Care Centre</button>
+        <button class="drop-link" onclick="showService('bpo','outbound')"><span class="drop-link-dot"></span>Outbound Lead Generation</button>
+        <button class="drop-link" onclick="showService('bpo','food')"><span class="drop-link-dot"></span>Food &amp; Hospitality Orders</button>
+        <button class="drop-link" onclick="showService('bpo','backoffice')"><span class="drop-link-dot"></span>Back-Office Processing</button>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-btn">Advisory <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('advisory','strategy')"><span class="drop-link-dot"></span>Business Strategy &amp; Growth</button>
+        <button class="drop-link" onclick="showService('advisory','process')"><span class="drop-link-dot"></span>Process Optimisation</button>
+        <button class="drop-link" onclick="showService('advisory','kpi')"><span class="drop-link-dot"></span>KPI Dashboarding</button>
+        <button class="drop-link" onclick="showService('advisory','grants')"><span class="drop-link-dot"></span>Grant Writing</button>
+      </div>
+    </li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="nav-secondary" onclick="showPage('contact')">Login</button>
+    <button class="nav-cta" onclick="showPage('contact')">Get Started →</button>
+  </div>
+</nav>
+<!-- ════════════════════════════════════════════════════
+     FIX PATCH 2 — Replaces chunk-3-hero.html entirely
+     Clean hero with SVG dashboard (no emoji), refined copy
+════════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <div class="hero-inner">
+
+    <!-- ── LEFT: Copy ── -->
+    <div class="hero-left">
+
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span>Now serving all of Australia</span>
+      </div>
+
+      <h1>
+        One Partner.<br>
+        <em>Every Solution</em><br>
+        You Need.
+      </h1>
+
+      <p class="hero-sub">
+        Financial governance, digital transformation, engineering,
+        NDIS support, and customer engagement — precision-delivered
+        by specialists across every discipline.
+      </p>
+
+      <div class="hero-btns">
+        <button class="btn-primary"
+          onclick="document.getElementById('home-services').scrollIntoView({behavior:'smooth'})">
+          Explore Services
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.5;flex-shrink:0">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <button class="btn-outline" onclick="showPage('contact')">
+          Book Free Consultation
+        </button>
+      </div>
+
+      <div class="hero-proof">
+        <div class="hero-proof-avatars">
+          <span>JM</span><span>AK</span><span>SR</span><span>TL</span>
+          <span style="font-size:.55rem">+</span>
+        </div>
+        <p class="hero-proof-text">
+          <strong>200+ Australian businesses</strong> trust us with their operations
+        </p>
+      </div>
+
+    </div><!-- end hero-left -->
+
+    <!-- ── RIGHT: Dashboard widget (SVG icons, no emoji) ── -->
+    <div class="hero-right">
+      <div class="hero-dashboard">
+
+        <!-- Header -->
+        <div class="dash-header">
+          <span class="dash-title">Practice Overview</span>
+          <span class="dash-live">
+            <span class="dash-live-dot"></span>Live
+          </span>
+        </div>
+
+        <!-- 6 service mini-cards -->
+        <div class="dash-grid">
+
+          <!-- Financial -->
+          <div class="dash-card" onclick="showService('financial','corporate')">
+            <div class="dash-card-header">
+              <div class="dash-card-dot">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/>
+                  <circle cx="12" cy="10" r="2.5"/></svg>
+              </div>
+              <div class="dash-label">Financial</div>
+            </div>
+            <div class="dash-value">5 Services</div>
+          </div>
+
+          <!-- Technology -->
+          <div class="dash-card" onclick="showService('technology','web-dev')">
+            <div class="dash-card-header">
+              <div class="dash-card-dot">
+                <svg viewBox="0 0 24 24"><polyline points="6 8 10 12 6 16"/>
+                  <line x1="13" y1="16" x2="17" y2="16"/></svg>
+              </div>
+              <div class="dash-label">Technology</div>
+            </div>
+            <div class="dash-value">5 Services</div>
+          </div>
+
+          <!-- Engineering -->
+          <div class="dash-card" onclick="showService('engineering','architecture')">
+            <div class="dash-card-header">
+              <div class="dash-card-dot">
+                <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-8 8 8v10"/>
+                  <rect x="9" y="14" width="6" height="6"/></svg>
+              </div>
+              <div class="dash-label">Engineering</div>
+            </div>
+            <div class="dash-value">4 Services</div>
+          </div>
+
+          <!-- Healthcare -->
+          <div class="dash-card" onclick="showService('healthcare','plan-mgmt')">
+            <div class="dash-card-header">
+              <div class="dash-card-dot">
+                <svg viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 1 2 12a10 10 0 0 1 20 0z"/>
+                  <path d="M12 8v8M8 12h8"/></svg>
+              </div>
+              <div class="dash-label">Healthcare</div>
+            </div>
+            <div class="dash-value">4 Services</div>
+          </div>
+
+          <!-- BPO -->
+          <div class="dash-card" onclick="showService('bpo','inbound')">
+            <div class="dash-card-header">
+              <div class="dash-card-dot">
+                <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z
+                           M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              </div>
+              <div class="dash-label">BPO</div>
+            </div>
+            <div class="dash-value">5 Services</div>
+          </div>
+
+          <!-- Advisory -->
+          <div class="dash-card" onclick="showService('advisory','strategy')">
+            <div class="dash-card-header">
+              <div class="dash-card-dot">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="dash-label">Advisory</div>
+            </div>
+            <div class="dash-value">4 Services</div>
+          </div>
+
+        </div><!-- end dash-grid -->
+
+        <!-- Footer row -->
+        <div class="dash-footer">
+          <div class="dash-footer-text">
+            Free initial consultation<br>
+            <strong style="color:rgba(255,255,255,.72);font-size:.78rem">No lock-in · 1-day response</strong>
+          </div>
+          <span class="dash-badge">AUS&nbsp;Compliant</span>
+        </div>
+
+      </div><!-- end hero-dashboard -->
+    </div><!-- end hero-right -->
+
+  </div><!-- end hero-inner -->
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-label">Trusted for</div>
+    <div class="trust-sep"></div>
+    <div class="trust-items">
+
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        ATO Registered Tax Agents
+      </div>
+
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        NDIS Plan Management
+      </div>
+
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="8" rx="2"/>
+          <rect x="2" y="14" width="20" height="8" rx="2"/>
+        </svg>
+        Cloud Infrastructure
+      </div>
+
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M2 20h20M4 20V10l8-8 8 8v10"/>
+          <rect x="9" y="14" width="6" height="6"/>
+        </svg>
+        Engineering &amp; Survey
+      </div>
+
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        BPO &amp; Customer Care
+      </div>
+
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        1-Day Response Time
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ── STATS BANNER ── -->
+<section class="stats-banner">
+  <div class="sb-orb-1"></div>
+  <div class="sb-orb-2"></div>
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-n" data-target="6">0</span>
+      <span class="stat-l">Practice Areas</span>
+      <span class="stat-sub">Financial · Tech · Engineering<br>Healthcare · BPO · Advisory</span>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <span class="stat-n" data-target="24">0</span>
+      <span class="stat-l">Specialisations</span>
+      <span class="stat-sub">Deep domain expertise<br>across every division</span>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <span class="stat-n">1 Day</span>
+      <span class="stat-l">Response Time</span>
+      <span class="stat-sub">Guaranteed specialist reply<br>within one business day</span>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <span class="stat-n">100%</span>
+      <span class="stat-l">AUS Compliant</span>
+      <span class="stat-sub">ATO · NDIS · ASIC · TPB<br>fully registered &amp; compliant</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICE CARDS ── -->
+<section class="home-services" id="home-services">
+  <div class="sec-inner">
+    <div class="services-header">
+      <div>
+        <div class="sec-eyebrow reveal">Our Practice Areas</div>
+        <h2 class="sec-title reveal reveal-d1">Six Divisions.<br><em>Infinite Capability.</em></h2>
+        <p class="sec-sub reveal reveal-d2">Each practice area is led by domain specialists. Click any card to explore the full suite of sub-services.</p>
+      </div>
+      <button class="btn-primary reveal" onclick="showPage('contact')" style="flex-shrink:0;align-self:flex-end">
+        Book Consultation →
+      </button>
+    </div>
+
+    <div class="srv-grid">
+
+      <!-- 01 Financial -->
+      <div class="srv-card reveal" onclick="showService('financial','corporate')">
+        <div class="srv-card-img">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="Financial Management" loading="lazy"/>
+          <div class="srv-card-img-overlay"></div>
+        </div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 01</div>
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </div>
+            <div class="srv-name">Financial Management &amp; Compliance</div>
+            <p class="srv-brief">Corporate accounting, cloud bookkeeping, Australian tax returns, BAS lodgement, payroll, and NDIS billing — all under one roof.</p>
+            <div class="srv-more">
+              <span>Explore service</span>
+              <div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Technology -->
+      <div class="srv-card reveal reveal-d1" onclick="showService('technology','web-dev')">
+        <div class="srv-card-img">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Technology Solutions" loading="lazy"/>
+          <div class="srv-card-img-overlay"></div>
+        </div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 02</div>
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/><polyline points="6 8 10 12 6 16"/><line x1="13" y1="16" x2="17" y2="16"/></svg>
+            </div>
+            <div class="srv-name">Technology &amp; Digital Solutions</div>
+            <p class="srv-brief">Web development, IT support, cloud infrastructure, cybersecurity, and AI &amp; automation — powering your digital transformation.</p>
+            <div class="srv-more">
+              <span>Explore service</span>
+              <div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Engineering -->
+      <div class="srv-card reveal reveal-d2" onclick="showService('engineering','architecture')">
+        <div class="srv-card-img">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Engineering" loading="lazy"/>
+          <div class="srv-card-img-overlay"></div>
+        </div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 03</div>
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-8 8 8v10"/><rect x="9" y="14" width="6" height="6"/></svg>
+            </div>
+            <div class="srv-name">Engineering &amp; Built Environment</div>
+            <p class="srv-brief">Architecture, structural engineering, land surveying, and high-fidelity 3D modelling — from concept through to construction documentation.</p>
+            <div class="srv-more">
+              <span>Explore service</span>
+              <div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Healthcare -->
+      <div class="srv-card reveal reveal-d3" onclick="showService('healthcare','plan-mgmt')">
+        <div class="srv-card-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Healthcare NDIS" loading="lazy"/>
+          <div class="srv-card-img-overlay"></div>
+        </div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 04</div>
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 1 2 12a10 10 0 0 1 20 0z"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+            <div class="srv-name">Healthcare &amp; NDIS Support</div>
+            <p class="srv-brief">Specialised NDIS plan management, allied health billing, PRODA administration, and compliance reporting for Australian care providers.</p>
+            <div class="srv-more">
+              <span>Explore service</span>
+              <div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 BPO -->
+      <div class="srv-card reveal reveal-d4" onclick="showService('bpo','inbound')">
+        <div class="srv-card-img">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Customer Experience BPO" loading="lazy"/>
+          <div class="srv-card-img-overlay"></div>
+        </div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 05</div>
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19 19 0 0 1 4.71 12 19.8 19.8 0 0 1 1.92 4.1 2 2 0 0 1 3.88 2h3a2 2 0 0 1 2 1.72c.13 1 .37 2 .72 2.95a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.13-1.12a2 2 0 0 1 2.11-.45c.95.35 1.95.59 2.95.72A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="srv-name">Customer Experience &amp; BPO</div>
+            <p class="srv-brief">Inbound sales, customer care, outbound lead generation, food order management, and back-office processing — delivered at scale.</p>
+            <div class="srv-more">
+              <span>Explore service</span>
+              <div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 Advisory -->
+      <div class="srv-card reveal reveal-d5" onclick="showService('advisory','strategy')">
+        <div class="srv-card-img">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Business Advisory" loading="lazy"/>
+          <div class="srv-card-img-overlay"></div>
+        </div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 06</div>
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="srv-name">Business Strategy &amp; Advisory</div>
+            <p class="srv-brief">Business structuring, process optimisation, KPI dashboards, workforce planning, and grant writing for SMEs and enterprises.</p>
+            <div class="srv-more">
+              <span>Explore service</span>
+              <div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ── DIFFERENTIATORS ── -->
+<section class="diff-section">
+  <div class="diff-header sec-inner">
+    <div class="sec-eyebrow reveal">Why Choose Us</div>
+    <h2 class="sec-title reveal reveal-d1">Built Different.<br><em>Proven in Practice.</em></h2>
+    <p class="sec-sub reveal reveal-d2" style="margin:0 auto">We don't just promise outcomes — we embed ourselves in your operations and deliver results that are measurable from day one.</p>
+  </div>
+
+  <div class="diff-grid">
+
+    <div class="diff-card reveal">
+      <span class="diff-num">01</span>
+      <div class="diff-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="diff-title">Fully Registered &amp; Compliant</div>
+      <p class="diff-desc">ATO-registered tax agents, NDIS-registered plan manager, and ASIC-compliant corporate advisors — every service backed by formal credentials.</p>
+    </div>
+
+    <div class="diff-card reveal reveal-d1">
+      <span class="diff-num">02</span>
+      <div class="diff-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="diff-title">One-Day Response Guarantee</div>
+      <p class="diff-desc">Every enquiry is matched to the right specialist and responded to within one business day. No call centres, no ticket queues — real experts, fast.</p>
+    </div>
+
+    <div class="diff-card reveal reveal-d2">
+      <span class="diff-num">03</span>
+      <div class="diff-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="diff-title">Six Divisions, One Account</div>
+      <p class="diff-desc">Manage your accounting, IT, engineering, NDIS, BPO, and advisory services through a single point of contact. No juggling multiple vendors.</p>
+    </div>
+
+    <div class="diff-card reveal reveal-d3">
+      <span class="diff-num">04</span>
+      <div class="diff-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="diff-title">Real-Time Visibility</div>
+      <p class="diff-desc">Live dashboards, monthly reporting, and direct team access give you full transparency into every engagement — no black boxes, ever.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section">
+  <div class="sec-inner">
+    <div class="how-header">
+      <div>
+        <div class="sec-eyebrow reveal">How It Works</div>
+        <h2 class="sec-title reveal reveal-d1">Simple. Seamless. <em>Fast.</em></h2>
+        <p class="sec-sub reveal reveal-d2">From your first conversation to a fully operational engagement — most clients are up and running within five to seven business days.</p>
+      </div>
+    </div>
+
+    <div class="steps-grid">
+
+      <div class="step-item reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="step-title">Book a Free Consult</div>
+        <p class="step-desc">Tell us about your business and challenges. No obligation — just a focused conversation with the right specialist.</p>
+      </div>
+
+      <div class="step-item reveal reveal-d1">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="step-title">Receive a Tailored Proposal</div>
+        <p class="step-desc">We scope your requirements and present a clear, transparent proposal with timelines, deliverables, and fixed pricing.</p>
+      </div>
+
+      <div class="step-item reveal reveal-d2">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="step-title">We Get to Work</div>
+        <p class="step-desc">Your dedicated team is onboarded rapidly — most engagements are fully operational within 5–7 business days of agreement.</p>
+      </div>
+
+      <div class="step-item reveal reveal-d3">
+        <div class="step-num">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <div class="step-title">You Stay in Control</div>
+        <p class="step-desc">Live dashboards, regular reporting, and direct access to your team — complete visibility and accountability at every stage.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section">
+  <div class="test-header sec-inner">
+    <div class="sec-eyebrow reveal">Client Stories</div>
+    <h2 class="sec-title reveal reveal-d1">Trusted by Australian<br><em>Business Leaders.</em></h2>
+    <p class="sec-sub reveal reveal-d2" style="margin:0 auto">Real outcomes for real businesses — from Sydney startups to national enterprises.</p>
+  </div>
+
+  <div class="test-grid">
+
+    <div class="test-card reveal">
+      <div class="test-stars">
+        <div class="test-star"></div><div class="test-star"></div><div class="test-star"></div>
+        <div class="test-star"></div><div class="test-star"></div>
+      </div>
+      <span class="test-quote-mark">"</span>
+      <p class="test-quote">Innovated Solutions completely transformed our NDIS billing process. What used to take our team two days per week is now handled seamlessly — with zero claim rejections in the last six months.</p>
+      <div class="test-author">
+        <div class="test-avatar">SK</div>
+        <div>
+          <div class="test-name">Sarah K.</div>
+          <div class="test-role">Operations Manager · Allied Health Clinic, NSW</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card reveal reveal-d1">
+      <div class="test-stars">
+        <div class="test-star"></div><div class="test-star"></div><div class="test-star"></div>
+        <div class="test-star"></div><div class="test-star"></div>
+      </div>
+      <span class="test-quote-mark">"</span>
+      <p class="test-quote">We engaged their technology team to rebuild our customer portal and migrate to cloud infrastructure. The project was delivered on time, on budget, and our IT costs dropped by 30% in the first year.</p>
+      <div class="test-author">
+        <div class="test-avatar">JM</div>
+        <div>
+          <div class="test-name">James M.</div>
+          <div class="test-role">CEO · Retail Group, Sydney</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card reveal reveal-d2">
+      <div class="test-stars">
+        <div class="test-star"></div><div class="test-star"></div><div class="test-star"></div>
+        <div class="test-star"></div><div class="test-star"></div>
+      </div>
+      <span class="test-quote-mark">"</span>
+      <p class="test-quote">Having financial, IT support, and advisory all through one team is genuinely game-changing. Our BAS is always lodged on time, our systems are secure, and we have a real strategy for growth. Highly recommended.</p>
+      <div class="test-author">
+        <div class="test-avatar">RP</div>
+        <div>
+          <div class="test-name">Rachel P.</div>
+          <div class="test-role">Director · Professional Services Firm, Melbourne</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA STRIP ── -->
+<div class="cta-strip">
+  <div class="cta-orb-1"></div>
+  <div class="cta-orb-2"></div>
+  <div class="cta-inner">
+    <div class="cta-pill">Free Initial Consultation</div>
+    <h2>Ready to simplify<br><em>your operations?</em></h2>
+    <p>Talk to a specialist today — no jargon, no commitment, no hidden fees. Just an honest conversation about what we can do for your business.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="showPage('contact')">Book Free Consultation →</button>
+      <button class="btn-outline" onclick="document.getElementById('home-services').scrollIntoView({behavior:'smooth'})">View All Services</button>
+    </div>
+    <div class="cta-note">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      No lock-in contracts · ATO &amp; NDIS registered · 1-day response guarantee
+    </div>
+  </div>
+</div>
+
+<!-- ── HOME FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><em>Innovated</em> Solutions<span>Pty Ltd</span></div>
+        <p>Integrated professional services across financial, technology, engineering, healthcare, BPO, and advisory for Australian businesses.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24"><path d="M4 4l16 16M4 20L20 4"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a onclick="showService('financial','corporate')">Financial Management</a>
+        <a onclick="showService('technology','web-dev')">Technology &amp; Digital</a>
+        <a onclick="showService('engineering','architecture')">Engineering</a>
+        <a onclick="showService('healthcare','plan-mgmt')">Healthcare &amp; NDIS</a>
+        <a onclick="showService('bpo','inbound')">BPO Solutions</a>
+        <a onclick="showService('advisory','strategy')">Advisory</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a onclick="showPage('contact')">Contact Us</a>
+        <a onclick="showPage('contact')">Get a Quote</a>
+        <a onclick="showPage('contact')">Careers</a>
+        <a onclick="showPage('contact')">Partnerships</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a>info@innovatedsolutions.com.au</a>
+        <a>+61 2 XXXX XXXX</a>
+        <a>Sydney, NSW, Australia</a>
+        <a>Mon–Fri · 8:30am – 5:30pm AEST</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 <span style="color:rgba(255,255,255,.45)">Innovated Solutions Pty Ltd</span> — Sydney, NSW, Australia — All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a>Privacy Policy</a>
+        <a>Terms of Service</a>
+        <a>Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end #page-home -->
+<!-- ══════════════════════════════════════════════════
+     SERVICE DETAIL PAGE
+══════════════════════════════════════════════════ -->
+<div class="page" id="page-service">
+
+  <div class="svc-hero">
+    <div class="svc-hero-noise"></div>
+    <div class="svc-orb"></div>
+    <div class="svc-hero-inner">
+      <button class="back-btn" onclick="showPage('home')">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to all services
+      </button>
+      <div class="svc-hero-eyebrow" id="svc-tag"></div>
+      <h1 id="svc-title"></h1>
+      <p class="svc-hero-desc" id="svc-desc"></p>
+    </div>
+  </div>
+
+  <div class="svc-tabs">
+    <div class="svc-tabs-inner" id="svc-tabs-inner"></div>
+  </div>
+
+  <div class="svc-body">
+    <div class="svc-body-inner" id="svc-body-inner">
+      <!-- Dynamically rendered -->
+    </div>
+  </div>
+
+  <div class="contact-mini">
+    <div class="cm-inner">
+      <div class="cm-text">
+        <h3>Ready to get started?</h3>
+        <p>Speak with a specialist in this practice area — free initial consultation, no commitment required.</p>
+      </div>
+      <div class="cm-actions">
+        <button class="btn-primary" onclick="showPage('contact')">Request a Consultation →</button>
+        <button class="btn-outline-dark" onclick="showPage('home')">View All Services</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <span>© 2026 <span style="color:rgba(255,255,255,.45)">Innovated Solutions Pty Ltd</span> — Sydney, NSW, Australia — All rights reserved.</span>
+        <button class="back-btn" onclick="showPage('home')" style="margin-bottom:0">← Back to home</button>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end #page-service -->
+
+<!-- ══════════════════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+
+  <div class="svc-hero" style="min-height:44vh;padding:4.5rem 2rem 3.5rem">
+    <div class="svc-hero-noise"></div>
+    <div class="svc-orb"></div>
+    <div class="svc-hero-inner">
+      <button class="back-btn" onclick="showPage('home')">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to home
+      </button>
+      <div class="svc-hero-eyebrow">Get in Touch</div>
+      <h1>Let's Discuss<br>Your Requirements</h1>
+      <p class="svc-hero-desc">Initial consultations are complimentary. We'll connect you with the right specialist within one business day — guaranteed.</p>
+    </div>
+  </div>
+
+  <div class="contact-body">
+    <div class="contact-grid">
+
+      <!-- Info Card -->
+      <div>
+        <div class="contact-info-card">
+          <h2>Contact Information</h2>
+          <p style="font-size:.85rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem">We serve businesses across all of Australia with expertise spanning all six practice areas.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-val">info@innovatedsolutions.com.au</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-val">+61 2 XXXX XXXX</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Office</div>
+            <div class="contact-detail-val">Sydney, NSW — Serving all of Australia</div>
+          </div>
+
+          <div class="hours-box">
+            <h4>Business Hours (AEST)</h4>
+            <div class="hours-row"><span class="hours-day">Monday – Friday</span><span>8:30am – 5:30pm</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span>9:00am – 1:00pm</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span>Closed</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="contact-form-card">
+        <h2>Send an Enquiry</h2>
+        <p>Fill out the form below and a specialist will respond within one business day.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane"/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="jane@company.com.au"/>
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="+61 4XX XXX XXX"/>
+        </div>
+
+        <div class="form-group">
+          <label>Service Area</label>
+          <select>
+            <option>Select a practice area...</option>
+            <option>Financial Management &amp; Compliance</option>
+            <option>Technology &amp; Digital Solutions</option>
+            <option>Engineering &amp; Built Environment</option>
+            <option>Healthcare &amp; NDIS Support</option>
+            <option>Customer Experience &amp; BPO</option>
+            <option>Business Strategy &amp; Advisory</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell us about your business and what you're looking to achieve..."></textarea>
+        </div>
+
+        <button class="btn-primary"
+          onclick="alert('Thank you! A specialist will be in touch within one business day.')"
+          style="width:100%;justify-content:center">
+          Send Enquiry →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <span>© 2026 <span style="color:rgba(255,255,255,.45)">Innovated Solutions Pty Ltd</span> — Sydney, NSW, Australia — All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end #page-contact -->
+<script>
+// ══════════════════════════════════════════════════
+//  SERVICE DATA
+// ══════════════════════════════════════════════════
+const SERVICES = {
+  financial:{
+    tag:'Practice Area 01',
+    title:'Financial Management & Compliance',
+    desc:'Complete financial oversight for Australian businesses — from day-to-day bookkeeping to complex tax structuring, payroll management, and NDIS billing solutions.',
+    subs:{
+      corporate:{
+        label:'Corporate Accounting',
+        subtitle:'ATO-compliant financial reporting for growth-minded businesses',
+        p1:'We deliver end-to-end corporate accounting and financial management tailored to Australian businesses. Our team combines deep ATO expertise with modern cloud accounting platforms to streamline your entire financial operation.',
+        p2:'From sole traders to enterprise clients, we ensure your accounts are accurate, your tax obligations met, and your cash flow visible at all times.',
+        imgs:['https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80','https://images.unsplash.com/photo-1543286386-713bdd548da4?w=500&q=80','https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80'],
+        services:['Corporate Financial Reporting (AASB Compliant)','Management Accounts & Monthly P&L Reporting','Year-End Financial Statement Preparation','ASIC Compliance & Annual Review Lodgement','Audit Support & Internal Control Review','FBT & CGT Advisory','Business Activity Statement (BAS) Preparation','Cash Flow Forecasting & Budget Modelling'],
+        whys:[{icon:'check',title:'ATO Registered Tax Agents',desc:'All tax work is handled by registered agents with current TPB standing.'},{icon:'shield',title:'Software-Agnostic Approach',desc:'We work with your existing platforms or recommend the best fit for your size.'},{icon:'zap',title:'Real-Time Reporting',desc:'Cloud dashboards give you live visibility into financial performance at any time.'}]
+      },
+      bookkeeping:{
+        label:'Cloud Bookkeeping',
+        subtitle:'Accurate, real-time books on your preferred cloud platform',
+        p1:'Our cloud bookkeeping service delivers accurate, real-time financial records using Xero, MYOB, and QuickBooks. We reconcile accounts daily, manage payables and receivables, and ensure your books are always audit-ready.',
+        p2:'Whether you need basic transaction coding or full accounts management, we scale to your requirements and your budget.',
+        imgs:['https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=900&q=80','https://images.unsplash.com/photo-1543286386-713bdd548da4?w=500&q=80','https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80'],
+        services:['Cloud Bookkeeping via Xero, MYOB & QuickBooks','Daily Bank Reconciliation','Accounts Payable Management & Invoice Processing','Accounts Receivable & Debtor Follow-Up','Expense Categorisation & Chart of Accounts Setup','Month-End Closing & Reporting','Inventory & Stock Tracking Integration','Payroll Journal Entries'],
+        whys:[{icon:'check',title:'Certified Xero & MYOB Advisors',desc:'Our bookkeepers hold certified advisor status with leading cloud platforms.'},{icon:'shield',title:'Daily Reconciliation',desc:'No more month-end surprises — your books are reconciled every business day.'},{icon:'zap',title:'Scalable Service',desc:'From 50 to 5,000 transactions per month — we scale as your volume grows.'}]
+      },
+      tax:{
+        label:'Australian Tax & BAS',
+        subtitle:'Stress-free tax compliance handled by registered agents',
+        p1:'Navigating Australian tax obligations can be complex and time-consuming. Our registered tax agents handle the full spectrum of income tax returns, BAS preparation, GST registration, and ATO correspondence on your behalf.',
+        p2:'We stay current with every ATO update, ensuring you claim every eligible deduction and meet every lodgement deadline without penalty.',
+        imgs:['https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&q=80','https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=500&q=80'],
+        services:['Individual & Sole Trader Tax Returns','Company & Trust Tax Returns','GST Registration & Management','BAS & IAS Preparation & Lodgement','ATO Correspondence & Dispute Resolution','Instalment Activity Statements (IAS)','FBT Return Preparation','Tax Planning & Minimisation Strategy'],
+        whys:[{icon:'check',title:'Registered Tax Agents (TPB)',desc:'All lodgements are signed off by TPB-registered tax agents.'},{icon:'shield',title:'Deadline Guarantee',desc:'We track every lodgement date and notify you in advance — no late fees.'},{icon:'zap',title:'ATO Liaison',desc:'We handle all ATO correspondence directly, saving you time and stress.'}]
+      },
+      payroll:{
+        label:'Payroll & SuperStream',
+        subtitle:'Compliant, on-time payroll for Australian workforces',
+        p1:'Australian payroll compliance is intricate — from Award interpretation to SuperStream obligations and Single Touch Payroll reporting. Our dedicated payroll team manages the full cycle so your employees are paid correctly and on time, every time.',
+        p2:'We handle everything from weekly processing to year-end summaries and STP finalisation.',
+        imgs:['https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80','https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=500&q=80','https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&q=80'],
+        services:['Weekly, Fortnightly & Monthly Payroll Processing','Single Touch Payroll (STP) Phase 2 Reporting','SuperStream Employer Contribution Management','Award Interpretation & Modern Award Compliance','Leave Accrual & Entitlement Management','PAYG Withholding & Payment Summaries','Onboarding & Offboarding Payroll Processing','Payroll Tax Calculation & State-Based Lodgement'],
+        whys:[{icon:'check',title:'STP Phase 2 Ready',desc:'Fully compliant with the ATO\'s Single Touch Payroll Phase 2 requirements.'},{icon:'shield',title:'Award Expertise',desc:'We interpret and apply Modern Awards correctly across all industry types.'},{icon:'zap',title:'Zero Late Payments',desc:'Our payroll calendar guarantees employees are paid on time, every pay cycle.'}]
+      },
+      'ndis-billing':{
+        label:'NDIS Billing',
+        subtitle:'Precision NDIS billing and plan management for providers',
+        p1:'The NDIS billing landscape demands specialist knowledge. Our NDIS billing team understands PACE, PRODA, and the price guide in granular detail — minimising claim rejections and protecting your organisation\'s cash flow.',
+        p2:'We process claims within 24 hours of service delivery confirmation, so your funding pipeline stays healthy.',
+        imgs:['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80','https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=80','https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&q=80'],
+        services:['NDIS Plan Management & End-to-End Claim Processing','PACE & PRODA Portal Claim Submission','Service Agreement Preparation & Participant Billing','Payment Request Processing & Reconciliation','Claim Rejection Review & Resubmission','NDIS Provider Registration Support','Funding Category Management & Budget Tracking','Monthly Financial Statements for Participants'],
+        whys:[{icon:'shield',title:'NDIS Specialist Team',desc:'Staff trained specifically in NDIS frameworks, PACE portal, and funding categories.'},{icon:'check',title:'Zero-Error Billing Commitment',desc:'Triple-checked claim submissions to minimise rejections and protect provider revenue.'},{icon:'clock',title:'24-Hour Turnaround',desc:'Claims processed and submitted within 24 hours of service delivery confirmation.'}]
+      }
+    }
+  },
+  technology:{
+    tag:'Practice Area 02',
+    title:'Technology & Digital Solutions',
+    desc:'From bespoke web applications to full managed IT infrastructure — we engineer, secure, and support your digital ecosystem so you can operate with confidence.',
+    subs:{
+      'web-dev':{
+        label:'Web & App Development',
+        subtitle:'Custom digital products engineered for Australian businesses',
+        p1:'Our development team builds custom web applications, mobile apps, and e-commerce platforms that solve real business problems. We work across the full stack — from UI/UX design through to backend architecture, APIs, and deployment.',
+        p2:'Whether you need a marketing site, a customer portal, or a complex enterprise platform, we deliver on time and on budget.',
+        imgs:['https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80','https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80','https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&q=80'],
+        services:['Custom Web Application Development','Mobile App Development (iOS & Android)','E-Commerce Platform Design & Build (Shopify, WooCommerce, Custom)','UI/UX Design & Prototyping','API Design, Integration & Management','Progressive Web App (PWA) Development','CMS Implementation (WordPress, Webflow, Strapi)','Performance Optimisation & Core Web Vitals'],
+        whys:[{icon:'lock',title:'Security-First Development',desc:'Every application is built with OWASP security principles embedded from day one.'},{icon:'server',title:'Scalable Architecture',desc:'We design systems that grow with you — from startup MVP to enterprise scale.'},{icon:'headphones',title:'Ongoing Support',desc:'Post-launch support packages available — we don\'t disappear after go-live.'}]
+      },
+      maintenance:{
+        label:'Website Maintenance',
+        subtitle:'Keep your digital presence fast, secure and always online',
+        p1:'A website is never truly "done". Plugins go outdated, performance degrades, and security vulnerabilities emerge constantly. Our maintenance team keeps your website updated, backed up, monitored, and performing at its best 24/7.',
+        p2:'Choose from monthly retainer packages or one-off maintenance sprints — we\'ll tailor a plan to your budget and site complexity.',
+        imgs:['https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&q=80','https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80','https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80'],
+        services:['CMS & Plugin Updates (WordPress, Drupal, etc.)','Daily Automated Backups & Restore Testing','Uptime Monitoring & Incident Alerts','Security Scanning & Malware Removal','SSL Certificate Management & Renewal','Page Speed Optimisation & Image Compression','Content Updates, Copy Changes & Page Additions','Monthly Maintenance Reports & Health Checks'],
+        whys:[{icon:'shield',title:'Proactive Monitoring',desc:'We detect issues before your customers do — uptime monitoring runs 24/7.'},{icon:'clock',title:'Fast Response Times',desc:'Critical issues resolved within 4 hours — non-critical within one business day.'},{icon:'check',title:'Transparent Reporting',desc:'Monthly reports show exactly what was done, when, and the current site health score.'}]
+      },
+      helpdesk:{
+        label:'IT Help Desk & Support',
+        subtitle:'Remote IT support that keeps your team productive',
+        p1:'Our IT help desk provides remote technical support for your team — covering hardware issues, software troubleshooting, user access management, printer nightmares, and everything in between. Your staff get fast, friendly help without waiting for an on-site visit.',
+        p2:'Flexible support plans from ad-hoc ticketing to dedicated monthly retainers with SLA guarantees.',
+        imgs:['https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=900&q=80','https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=500&q=80','https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80'],
+        services:['Level 1–3 Remote Help Desk Support','Microsoft 365 & Google Workspace Administration','User Onboarding, Offboarding & Access Management','VPN Setup & Remote Work Configuration','Printer, Peripheral & Hardware Troubleshooting','Software Installation & Licensing Management','Email Security, Spam Filtering & Phishing Response','Ticketing System Management & SLA Reporting'],
+        whys:[{icon:'headphones',title:'Australian Business Hours',desc:'Real humans answering your tickets during AEST business hours — no bots.'},{icon:'zap',title:'Fast Resolution Times',desc:'Average ticket resolution under 2 hours for Priority 1 issues.'},{icon:'users',title:'Dedicated Account Manager',desc:'One point of contact who knows your environment and team.'}]
+      },
+      cloud:{
+        label:'Cloud & Cybersecurity',
+        subtitle:'Enterprise-grade cloud infrastructure and security for every budget',
+        p1:'We design, deploy, and manage cloud infrastructure across AWS, Azure, and GCP — then protect it with layered cybersecurity controls. From firewall configuration to penetration testing, we make sure your data is always protected.',
+        p2:'Our cybersecurity practice also helps businesses meet compliance requirements including ISO 27001, SOC 2, and the Essential Eight.',
+        imgs:['https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&q=80','https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=500&q=80'],
+        services:['Cloud Infrastructure Design & Deployment (AWS, Azure, GCP)','Managed Cloud Services & Cost Optimisation','Network Architecture & Firewall Management','Cybersecurity Audit & Risk Assessment','Penetration Testing & Vulnerability Scanning','Essential Eight Maturity Assessment','Zero Trust Security Implementation','Disaster Recovery Planning & Business Continuity'],
+        whys:[{icon:'lock',title:'Essential Eight Experts',desc:'We assess and uplift your Essential Eight maturity to meet ASD requirements.'},{icon:'server',title:'Multi-Cloud Certified',desc:'Engineers hold certifications across AWS, Azure, and GCP platforms.'},{icon:'shield',title:'24/7 Security Monitoring',desc:'SIEM-based monitoring detects and responds to threats around the clock.'}]
+      },
+      ai:{
+        label:'AI & Automation',
+        subtitle:'Intelligent automation that eliminates repetitive work',
+        p1:'We integrate AI and automation into your existing business processes — saving hours of manual work, reducing errors, and freeing your team to focus on high-value activities. From chatbots to workflow automation to data analytics, we make AI practical.',
+        p2:'Every automation project begins with a process audit to identify the highest-ROI opportunities before a single line of code is written.',
+        imgs:['https://images.unsplash.com/photo-1677442135968-6db3b0025e95?w=900&q=80','https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80','https://images.unsplash.com/photo-1555255707-c07966088b7b?w=500&q=80'],
+        services:['AI Chatbot & Virtual Assistant Integration','Robotic Process Automation (RPA) with UiPath & Power Automate','Business Intelligence & Power BI Dashboard Development','OCR & Document Processing Automation','CRM & ERP Workflow Automation','Custom GPT & LLM Integration for Business Workflows','Predictive Analytics & Reporting Models','API-Driven Integration Between Business Systems'],
+        whys:[{icon:'zap',title:'ROI-First Approach',desc:'We identify the highest-value automation opportunities before committing resources.'},{icon:'server',title:'Platform Agnostic',desc:'We work with your existing stack — no need to rip and replace systems.'},{icon:'check',title:'Training & Handover',desc:'Your team is trained on every system we build — you own the outcome.'}]
+      }
+    }
+  },
+  engineering:{
+    tag:'Practice Area 03',
+    title:'Engineering & Built Environment',
+    desc:'Professional architectural, structural, and survey services that guide your project from initial concept through to construction-ready documentation and 3D visualisation.',
+    subs:{
+      architecture:{
+        label:'Architectural Design',
+        subtitle:'Inspired design from concept through to council approval',
+        p1:'Our architectural team delivers residential and commercial design solutions that are creative, practical, and council-ready. We take your brief from initial sketch through to full Development Application documentation.',
+        p2:'We specialise in Sydney metro and regional NSW projects, with an in-depth understanding of local planning controls and council requirements.',
+        imgs:['https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80','https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80'],
+        services:['Residential Architectural Design (New Builds & Renovations)','Commercial & Mixed-Use Development Design','Development Application (DA) Preparation & Lodgement','Planning Permit & CDC Application Support','Concept Design, Feasibility Studies & Site Analysis','Design Development & Construction Documentation','Interior Design & Material Scheduling','Heritage Building Assessment & Adaptive Reuse'],
+        whys:[{icon:'compass',title:'Council-Ready First Time',desc:'Our DA packages are comprehensive — maximising your approval chances on first submission.'},{icon:'eye',title:'End-to-End Service',desc:'From initial consultation to stamped drawings — one team, zero handover gaps.'},{icon:'clipboard',title:'NSW Planning Expertise',desc:'Deep knowledge of SEPP, LEP, and DCP controls across Greater Sydney.'}]
+      },
+      survey:{
+        label:'Land & Topographic Survey',
+        subtitle:'Precision survey data that underpins confident decisions',
+        p1:'Accurate survey data is the foundation of every successful built environment project. Our licensed surveyors deliver boundary, topographic, and feature surveys with precision and speed — using modern total stations and drone technology where appropriate.',
+        p2:'Our survey reports are formatted for direct use by architects, engineers, and council — saving you time at every project stage.',
+        imgs:['https://images.unsplash.com/photo-1582139329536-e7284fece509?w=900&q=80','https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=500&q=80','https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500&q=80'],
+        services:['Boundary Survey & Identification Survey','Topographic & Feature Survey','Contour Survey for Engineering Design','Easement Identification & Restriction Surveys','As-Built Survey & Measured Drawing Services','Drone-Assisted Aerial Survey','Subdivision Survey & Strata Title Survey','Construction Set-Out & Monitoring Survey'],
+        whys:[{icon:'compass',title:'Licensed Surveyors',desc:'All surveys conducted by NSW-licensed surveyors with full professional indemnity.'},{icon:'check',title:'Fast Turnaround',desc:'Standard survey reports delivered within 5–7 business days of fieldwork.'},{icon:'eye',title:'Drone Technology',desc:'Drone surveys for large sites reduce cost and deliver higher-resolution data.'}]
+      },
+      '3d':{
+        label:'3D Modelling & BIM',
+        subtitle:'Photorealistic renders and intelligent BIM models',
+        p1:'Our 3D and BIM team transforms your design intent into photorealistic renders, animated walkthroughs, and coordinated BIM models that win approvals, impress investors, and reduce on-site coordination issues.',
+        p2:'We work in Revit, Archicad, SketchUp, and 3ds Max — and deliver outputs in any format required by your design or construction team.',
+        imgs:['https://images.unsplash.com/photo-1545670723-196ed0954986?w=900&q=80','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80','https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80'],
+        services:['Revit BIM Modelling (LOD 100–400)','Archicad 3D Documentation','Photorealistic Exterior & Interior Renders','Animated Walkthrough & Fly-Through Videos','Virtual Reality (VR) Presentation Models','Clash Detection & BIM Coordination Reports','Point Cloud to BIM (Scan-to-BIM)','Material & Colour Boards for Client Presentations'],
+        whys:[{icon:'eye',title:'Photorealistic Quality',desc:'Renders indistinguishable from photography — built to win approvals and sales.'},{icon:'server',title:'BIM Coordination',desc:'Clash detection catches coordination issues before they cost money on site.'},{icon:'compass',title:'Fast Delivery',desc:'Standard renders delivered within 48–72 hours of model receipt.'}]
+      },
+      structural:{
+        label:'Structural Engineering',
+        subtitle:'Safe, efficient structural design from concept to certification',
+        p1:'Our structural engineers design and certify structural systems for residential, commercial, and civil projects across NSW. We combine engineering rigour with practical construction knowledge to deliver designs that are efficient, cost-effective, and buildable.',
+        p2:'We liaise directly with architects, surveyors, and builders to ensure seamless coordination at every project stage.',
+        imgs:['https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80','https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80','https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&q=80'],
+        services:['Residential Structural Design & Certification','Commercial & Industrial Structural Engineering','Foundation Design (Piling, Raft, Pad, Strip)','Steel & Concrete Frame Design','Retaining Wall & Slope Stability Analysis','Structural Peer Review & Certification','Construction Issue Drawings & Specifications','Dilapidation Survey & Structural Condition Reports'],
+        whys:[{icon:'shield',title:'MIEAust Certified Engineers',desc:'All structural work signed off by Chartered Professional Engineers.'},{icon:'check',title:'Council Certification Ready',desc:'Our reports and drawings meet all council and certifier submission requirements.'},{icon:'compass',title:'Collaborative Approach',desc:'We work alongside your architect and builder — not in isolation.'}]
+      }
+    }
+  },
+  healthcare:{
+    tag:'Practice Area 04',
+    title:'Healthcare & NDIS Support Services',
+    desc:'Specialised administrative, billing, and compliance support purpose-built for NDIS providers, allied health clinics, and disability care organisations across Australia.',
+    subs:{
+      'plan-mgmt':{
+        label:'NDIS Plan Management',
+        subtitle:'Expert plan management that protects participant budgets',
+        p1:'Our NDIS plan management service handles the full financial management of participant plans — processing provider invoices, managing budget tracking, and ensuring every dollar is spent in accordance with the participant\'s plan goals.',
+        p2:'Participants retain full choice and control while we handle all the administrative complexity behind the scenes.',
+        imgs:['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80','https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=80','https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&q=80'],
+        services:['NDIS Plan Management & Financial Administration','Provider Invoice Processing & Payment','Budget Tracking & Funding Category Management','Monthly Financial Statements for Participants & Families','NDIS Price Guide Compliance Checking','Participant Portal Access & Real-Time Budget Visibility','Support Coordinator Liaison & Reporting','Plan Review Preparation & Evidence Support'],
+        whys:[{icon:'shield',title:'NDIS Registered Plan Manager',desc:'We are a registered NDIS plan management provider operating nationally.'},{icon:'check',title:'24-Hour Payment Processing',desc:'Provider invoices processed and paid within 24 business hours of receipt.'},{icon:'users',title:'Dedicated Support Team',desc:'Each participant has a named contact who knows their plan and goals.'}]
+      },
+      allied:{
+        label:'Allied Health Billing',
+        subtitle:'Accurate billing for allied health practices of every size',
+        p1:'Allied health billing is complex — Medicare bulk billing, private health insurance, NDIS, and DVA claims all have different rules and claim pathways. Our specialist billing team navigates this complexity so your practitioners can focus on patients.',
+        p2:'We work with psychology, physiotherapy, occupational therapy, speech pathology, dietetics, and podiatry practices.',
+        imgs:['https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=900&q=80','https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=80','https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80'],
+        services:['Medicare Bulk Billing & Patient Claim Submission','Private Health Insurance Claim Management','DVA (Department of Veterans\' Affairs) Billing','NDIS Allied Health Service Claim Submission','Halaxy, Cliniko & Nookal Billing Integration','Debtor Management & Outstanding Invoice Follow-Up','PRODA Portal Administration','Monthly Revenue Reports & Reconciliation'],
+        whys:[{icon:'check',title:'Multi-Payer Expertise',desc:'We manage Medicare, DVA, NDIS, and private health claims from one team.'},{icon:'shield',title:'Practice Software Specialists',desc:'Certified in Halaxy, Cliniko, and Nookal — your data stays in your system.'},{icon:'zap',title:'Reduced Rejection Rates',desc:'Our quality checks cut claim rejection rates by an average of 80%.'}]
+      },
+      proda:{
+        label:'PRODA Administration',
+        subtitle:'Take the pain out of PRODA portal management',
+        p1:'The PRODA portal is essential for NDIS providers but can be a significant time drain. Our PRODA administration team manages all portal interactions on your behalf — from registration and compliance to claim submissions and issue resolution.',
+        p2:'We keep your registration current, your claims lodged, and your compliance status green.',
+        imgs:['https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=900&q=80','https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80','https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=80'],
+        services:['PRODA Portal Registration & Setup','Organisation Relationship Authorisation (RA) Management','NDIS Provider Registration & Re-Registration Support','Service Booking Creation & Management','PACE System Navigation & Claim Submission','Compliance Document Submission & Renewal','Audit Evidence Compilation & Response Support','NDIS Quality & Safeguards Commission Liaison'],
+        whys:[{icon:'shield',title:'Registration Compliance Specialists',desc:'We track every renewal date — your registration never lapses on our watch.'},{icon:'check',title:'Issue Resolution Experience',desc:'Our team has resolved hundreds of PRODA disputes and portal access issues.'},{icon:'clock',title:'Rapid Response',desc:'Portal issues escalated and resolved within one business day.'}]
+      },
+      coordination:{
+        label:'Care Coordination Support',
+        subtitle:'Administrative support that frees coordinators to focus on care',
+        p1:'Support coordinators carry a heavy administrative load — rostering, documentation, reporting, and participant communication all compete for time that should be spent on care coordination. We take the admin burden off your coordinators\' plates.',
+        p2:'Our care coordination support team handles the paperwork, scheduling, and reporting so your team can focus on building genuine participant relationships.',
+        imgs:['https://images.unsplash.com/photo-1584515933487-779824d29309?w=900&q=80','https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80','https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=80'],
+        services:['Support Worker Rostering & Scheduling','Participant Record Management & File Maintenance','Service Agreement Drafting & Review','Progress Note & Support Plan Documentation','Incident Report Documentation & NDIS Reporting','Progress Report & NDIS Review Preparation','Referral Management & Intake Processing','Practice Management Software Administration'],
+        whys:[{icon:'users',title:'NDIS Administration Experts',desc:'Our team holds Certificate IV in Disability Support and allied qualifications.'},{icon:'check',title:'Documentation Compliance',desc:'All documentation meets NDIS Quality & Safeguards Commission standards.'},{icon:'zap',title:'Rapid Onboarding',desc:'Up and running within 3–5 business days of agreement signing.'}]
+      }
+    }
+  },
+  bpo:{
+    tag:'Practice Area 05',
+    title:'Customer Experience & BPO Solutions',
+    desc:'Outsourced contact centre and business process support tailored to retail, hospitality, and service businesses — delivering seamless customer interactions at scale and on budget.',
+    subs:{
+      inbound:{
+        label:'Inbound Sales',
+        subtitle:'Convert more inbound calls into revenue',
+        p1:'Our inbound sales agents are trained to convert enquiry calls into confirmed orders and appointments. Using your brand voice, scripts, and objection handling frameworks, we act as a seamless extension of your sales team.',
+        p2:'We cover telephone, live chat, and email channels — with full QA monitoring and performance reporting.',
+        imgs:['https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&q=80','https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80'],
+        services:['Inbound Sales Order Taking & Upselling','Product Enquiry Handling & Conversion','Appointment Setting & Calendar Management','Script Development & Objection Handling Frameworks','Live Chat & Email Sales Conversion','CRM Data Entry & Lead Qualification','Campaign-Specific Sales Lines','Real-Time Conversion Rate Reporting'],
+        whys:[{icon:'users',title:'Trained Brand Ambassadors',desc:'Agents are briefed on your brand, products, and tone before a single call.'},{icon:'bar-chart',title:'Conversion Tracking',desc:'Every call is logged and conversion data reported in real time.'},{icon:'zap',title:'Rapid Onboarding',desc:'New inbound campaigns live within 5–7 business days of agreement signing.'}]
+      },
+      'customer-care':{
+        label:'Customer Care',
+        subtitle:'Exceptional customer service delivered at scale',
+        p1:'We provide omnichannel customer care across phone, live chat, email, and social — giving your customers a consistent, professional experience at every touchpoint.',
+        p2:'Our customer care teams are trained in complaint handling, empathy, and de-escalation — protecting your reputation when it matters most.',
+        imgs:['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80','https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&q=80','https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80'],
+        services:['Phone, Live Chat & Email Customer Support','Social Media Customer Service','Complaint Handling & Resolution Management','Escalation Management & Executive Complaint Handling','After-Hours & Weekend Call Overflow','Customer Satisfaction (CSAT) Surveys & Reporting','Refund, Return & Exchange Processing','Knowledge Base Management & FAQ Maintenance'],
+        whys:[{icon:'headphones',title:'Omnichannel Delivery',desc:'Phone, email, chat, and social — managed from one integrated team.'},{icon:'bar-chart',title:'CSAT Reporting',desc:'Real-time customer satisfaction dashboards keep you informed.'},{icon:'shield',title:'Complaint Specialists',desc:'De-escalation training means we protect your brand in every interaction.'}]
+      },
+      outbound:{
+        label:'Outbound Lead Generation',
+        subtitle:'Qualified leads delivered directly to your sales pipeline',
+        p1:'Our outbound team makes high-quality calls on your behalf — whether cold calling, appointment setting, or re-engaging lapsed customers. We use proven scripts, objection handling frameworks, and CRM-integrated dialling to maximise contact rates.',
+        p2:'All leads are qualified to your criteria before being handed to your sales team — so your closers only speak with genuinely interested prospects.',
+        imgs:['https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80','https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&q=80','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80'],
+        services:['B2B & B2C Cold Calling Campaigns','Appointment Setting for Sales Teams','Lead Qualification & Pipeline Nurturing','Lapsed Customer Re-Engagement','Market Research & Survey Outreach','CRM Data Cleansing & List Management','Script Development & A/B Testing','Daily Lead Report & Campaign Analytics'],
+        whys:[{icon:'target',title:'Qualified Leads Only',desc:'We only pass leads that meet your defined qualification criteria.'},{icon:'bar-chart',title:'Transparent Campaign Reporting',desc:'Daily reports show dials, contacts, conversions, and cost-per-lead.'},{icon:'zap',title:'Dedicated Campaign Team',desc:'Your campaign is run by a consistent team who know your offer and audience.'}]
+      },
+      food:{
+        label:'Food & Hospitality Orders',
+        subtitle:'Order-taking and customer service for food and hospitality businesses',
+        p1:'We specialise in food, quick service restaurant (QSR), and hospitality order management — taking phone orders, handling delivery enquiries, and managing customer communication for restaurants, pizza chains, grocery delivery, and food manufacturers.',
+        p2:'Our agents are trained on your menu, specials, and ordering systems — customers won\'t know they\'re not calling your own staff.',
+        imgs:['https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80','https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&q=80','https://images.unsplash.com/photo-1484659619207-9165d119dafe?w=500&q=80'],
+        services:['Phone Order Taking for Restaurants & QSR','Pizza & Food Delivery Order Management','Grocery & Meal Kit Order Processing','After-Hours & Peak Period Order Overflow','Delivery Status & Customer Communication','Upselling Meal Deals, Extras & Promotions','Order Modification & Complaint Handling','POS System Integration & Order Entry'],
+        whys:[{icon:'zap',title:'Menu-Trained Agents',desc:'Agents are trained on your full menu and specials before launch.'},{icon:'users',title:'Peak Period Scaling',desc:'We scale agent numbers for Friday nights, school holidays, and promotions.'},{icon:'headphones',title:'POS Integration',desc:'We enter orders directly into your POS or ordering system — no double handling.'}]
+      },
+      backoffice:{
+        label:'Back-Office Processing',
+        subtitle:'Accurate, fast back-office support for high-volume operations',
+        p1:'Behind every great customer experience is a well-run back office. Our back-office processing team handles the high-volume, detail-oriented tasks that slow your team down — data entry, document processing, verification, and CRM management.',
+        p2:'We integrate with your existing systems and deliver to agreed accuracy and turnaround SLAs — with zero disruption to your operations.',
+        imgs:['https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80','https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=500&q=80','https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=500&q=80'],
+        services:['High-Volume Data Entry & Indexing','Document Scanning, Classification & Filing','Form Processing & Verification','CRM Data Cleansing & Database Management','Order Processing & Fulfillment Administration','Invoice & Purchase Order Processing','Customer Record Updates & Merge Audits','Virtual Reception & Message-Taking Services'],
+        whys:[{icon:'check',title:'99.5% Accuracy SLA',desc:'Quality control checks on all processed data — accuracy is guaranteed.'},{icon:'clock',title:'Fast Turnaround',desc:'Standard batch processing completed within 24 hours of file receipt.'},{icon:'server',title:'System Agnostic',desc:'We work in your existing CRM, ERP, or document management system.'}]
+      }
+    }
+  },
+  advisory:{
+    tag:'Practice Area 06',
+    title:'Business Strategy & Growth Advisory',
+    desc:'Strategic consulting that helps Australian businesses structure themselves for scale, optimise internal operations, and access funding and growth opportunities with confidence.',
+    subs:{
+      strategy:{
+        label:'Business Strategy',
+        subtitle:'Practical strategy grounded in operational reality',
+        p1:'We don\'t deliver strategy decks that gather dust. Our advisory engagements are hands-on and implementation-focused — working alongside your leadership team to identify inefficiencies, design scalable processes, and build the operational infrastructure for sustainable growth.',
+        p2:'From start-up structuring to enterprise transformation, we bring commercial rigour and on-the-ground Australian business experience to every engagement.',
+        imgs:['https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80'],
+        services:['Business Entity Structuring — Sole Trader, Company, Trust, Partnership','ABN & ACN Registration, ASIC Compliance & Company Secretary','Business Planning & Investor-Ready Pitch Deck Preparation','Go-to-Market Strategy & Launch Planning','Competitive Analysis & Market Positioning','Revenue Model Design & Pricing Strategy','Merger, Acquisition & Due Diligence Support','Start-up Advisory & Growth Roadmapping'],
+        whys:[{icon:'target',title:'Outcomes-Focused',desc:'Every engagement begins with clear, measurable goals agreed with your leadership team.'},{icon:'briefcase',title:'Australian Market Expertise',desc:'Deep knowledge of Australian regulations, funding programs, and business frameworks.'},{icon:'trending-up',title:'Embedded Advisory Model',desc:'We work alongside your team — not just above them — to ensure strategies land.'}]
+      },
+      process:{
+        label:'Process Optimisation',
+        subtitle:'Eliminate inefficiency and build scalable operations',
+        p1:'Inefficient processes quietly cost businesses thousands of dollars per month in wasted labour, duplicated effort, and missed opportunities. Our process optimisation team maps your current workflows, identifies bottlenecks, and designs leaner, more effective systems.',
+        p2:'We then help you implement and embed the new processes — including creating the SOPs and training materials your team needs to sustain the change.',
+        imgs:['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80','https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'],
+        services:['Business Process Mapping & As-Is Analysis','Bottleneck Identification & Root Cause Analysis','To-Be Process Design & Implementation Roadmap','Standard Operating Procedure (SOP) Authoring','Workflow Automation Identification & Scoping','Change Management Planning & Communication','Staff Training Material & Quick Reference Guide Development','Post-Implementation Review & Continuous Improvement'],
+        whys:[{icon:'check',title:'Measurable ROI',desc:'Every process improvement is quantified — you see the hours and dollars saved.'},{icon:'users',title:'Change Management Expertise',desc:'We bring your team along the journey — no resistance, no reversion.'},{icon:'server',title:'System Integration Aware',desc:'Process design takes your existing technology stack into full account.'}]
+      },
+      kpi:{
+        label:'KPI Dashboarding',
+        subtitle:'Real-time visibility into what matters most in your business',
+        p1:'You can\'t manage what you can\'t measure. Our KPI framework design and dashboarding service gives your leadership team clear, real-time visibility into the metrics that drive business performance — across finance, operations, sales, and customer experience.',
+        p2:'We design your KPI framework, connect your data sources, and build the dashboards in Power BI, Looker, or your preferred platform.',
+        imgs:['https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80','https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80','https://images.unsplash.com/photo-1543286386-713bdd548da4?w=500&q=80'],
+        services:['KPI Framework Design & Business Metrics Identification','Power BI Dashboard Development & Deployment','Google Looker & Data Studio Dashboard Build','Data Source Integration & API Connection','Executive Reporting Dashboard Design','Operational & Department-Level KPI Scorecards','Automated Daily & Weekly Reporting Emails','Staff Training & Dashboard Adoption Support'],
+        whys:[{icon:'bar-chart',title:'Power BI Certified',desc:'Our data engineers hold Microsoft Power BI certification and extensive build experience.'},{icon:'server',title:'Multi-Source Integration',desc:'We connect data from your CRM, ERP, accounting software, and operations tools.'},{icon:'check',title:'Adoption-Focused',desc:'We train your team to use and trust the dashboard — data culture included.'}]
+      },
+      grants:{
+        label:'Grant Writing',
+        subtitle:'Maximise your chances of securing Australian government grants',
+        p1:'Australian federal and state governments offer billions in grant funding each year — but the application process is competitive, complex, and time-intensive. Our grant writing specialists research relevant programs, assess your eligibility, and write compelling applications on your behalf.',
+        p2:'We have experience across Accelerating Commercialisation, Export Market Development Grants (EMDG), state innovation programs, and sector-specific funding rounds.',
+        imgs:['https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80','https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80'],
+        services:['Government Grant Research & Eligibility Assessment','Federal & State Grant Application Writing','Accelerating Commercialisation (AC) Applications','Export Market Development Grant (EMDG) Applications','R&D Tax Incentive (RDTI) Support','Grant Acquittal Report Writing','Application Review & Pre-Submission Audit','Grant Calendar Management & Upcoming Opportunity Alerts'],
+        whys:[{icon:'target',title:'Eligibility First',desc:'We conduct a thorough eligibility assessment before committing time to any application.'},{icon:'briefcase',title:'Proven Track Record',desc:'Our team has supported over $10M in successful grant applications for Australian SMEs.'},{icon:'trending-up',title:'Full Acquittal Support',desc:'We write the application and support reporting obligations through to acquittal.'}]
+      }
+    }
+  }
+};
+
+// ══════════════════════════════════════════════════
+//  ICON SVG MAP
+// ══════════════════════════════════════════════════
+function iconSVG(name){
+  const icons={
+    check:      '<polyline points="20 6 9 17 4 12"/>',
+    shield:     '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    zap:        '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    lock:       '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+    server:     '<rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/>',
+    headphones: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',
+    compass:    '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+    eye:        '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+    clipboard:  '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/>',
+    clock:      '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    users:      '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    'bar-chart':'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+    target:     '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    briefcase:  '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+    'trending-up':'<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>'
+  };
+  return `<svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#3B82F6;fill:none;stroke-width:2;flex-shrink:0">${icons[name]||''}</svg>`;
+}
+
+// ══════════════════════════════════════════════════
+//  ROUTING
+// ══════════════════════════════════════════════════
+let currentServiceId = null;
+let currentSubId     = null;
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-'+id);
+  if(target){
+    target.classList.add('active');
+    if(id !== 'home') window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+function showService(serviceId, subId){
+  const s = SERVICES[serviceId];
+  if(!s) return;
+  currentServiceId = serviceId;
+  currentSubId = subId || Object.keys(s.subs)[0];
+
+  document.getElementById('svc-tag').textContent  = s.tag;
+  document.getElementById('svc-title').textContent = s.title;
+  document.getElementById('svc-desc').textContent  = s.desc;
+
+  // Build tabs
+  const tabsEl = document.getElementById('svc-tabs-inner');
+  tabsEl.innerHTML = Object.keys(s.subs).map(sid => `
+    <button class="svc-tab${sid===currentSubId?' active':''}" onclick="switchSubService('${sid}')">
+      ${s.subs[sid].label}
+    </button>
+  `).join('');
+
+  // Build sub-content panels
+  const bodyEl = document.getElementById('svc-body-inner');
+  bodyEl.innerHTML = Object.keys(s.subs).map(sid => {
+    const sub = s.subs[sid];
+    return `
+    <div class="svc-sub-content${sid===currentSubId?' active':''}" id="sub-${sid}">
+      <div class="img-strip">
+        ${sub.imgs.map(u=>`<img src="${u}" alt="" loading="lazy"/>`).join('')}
+      </div>
+      <div class="detail-grid">
+        <div class="detail-intro">
+          <h2>${sub.subtitle}</h2>
+          <p>${sub.p1}</p>
+          <p>${sub.p2}</p>
+          <div class="services-list-wrap">
+            <div class="services-list-title">What's included</div>
+            <ul class="sub-list">
+              ${sub.services.map(sv=>`
+                <li>
+                  <span class="sub-dot">
+                    <svg viewBox="0 0 24 24" style="width:9px;height:9px;stroke:#2563EB;fill:none;stroke-width:3">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </span>
+                  ${sv}
+                </li>`).join('')}
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="why-box">
+            <div class="why-box-orb"></div>
+            <h3>Why choose Innovated Solutions</h3>
+            ${sub.whys.map(w=>`
+              <div class="why-item">
+                <div class="why-dot">${iconSVG(w.icon)}</div>
+                <div>
+                  <strong>${w.title}</strong>
+                  <p>${w.desc}</p>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  showPage('service');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function switchSubService(subId){
+  const s = SERVICES[currentServiceId];
+  if(!s || !s.subs[subId]) return;
+  currentSubId = subId;
+  document.querySelectorAll('.svc-tab').forEach(t => {
+    t.classList.toggle('active', t.textContent.trim() === s.subs[subId].label);
+  });
+  document.querySelectorAll('.svc-sub-content').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('sub-'+subId);
+  if(panel) panel.classList.add('active');
+}
+
+// ══════════════════════════════════════════════════
+//  SCROLL REVEAL
+// ══════════════════════════════════════════════════
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ══════════════════════════════════════════════════
+//  COUNTER ANIMATION
+// ══════════════════════════════════════════════════
+function animateCounter(el, target, duration=1600){
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if(start >= target){ el.textContent = target + '+'; clearInterval(timer); }
+    else { el.textContent = Math.floor(start); }
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const target = parseInt(e.target.dataset.target);
+      if(target) animateCounter(e.target, target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+</script>
+</body>
+</html>
