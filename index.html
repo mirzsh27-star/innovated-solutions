@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Innovated Solutions Pty Ltd — Financial · Technology · Advisory</title>
+<title>Innovated Solutions Pty Ltd — Financial · Technology · Automation · Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet"/>
@@ -55,14 +55,25 @@ nav{background:rgba(6,12,26,.94);backdrop-filter:blur(24px);-webkit-backdrop-fil
 /* PAGE SYSTEM */
 .page{display:none}.page.active{display:block}
 
-/* HERO */
-.hero{min-height:100vh;background:var(--grad-hero);display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 2rem 6rem}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 80% at 50% 0%,black 30%,transparent 80%);pointer-events:none}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-.hero-orb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,.22),transparent 70%);top:-220px;left:-200px}
-.hero-orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,.16),transparent 70%);bottom:-120px;right:-120px}
-.hero-orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);top:40%;left:50%}
-.hero-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+/* HERO — photo-based like service pages */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 2rem 6rem}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,12,26,.96) 0%,rgba(6,12,26,.82) 45%,rgba(6,12,26,.55) 100%)}
+.hero-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center;position:relative;z-index:1}
+/* Service preview cards in hero right */
+.hero-cards{display:flex;flex-direction:column;gap:.75rem}
+.hero-svc-card{border-radius:12px;overflow:hidden;cursor:pointer;position:relative;height:108px;border:1px solid rgba(255,255,255,.1);transition:transform .25s,box-shadow .25s}
+.hero-svc-card:hover{transform:translateX(4px);box-shadow:0 8px 30px rgba(37,99,235,.25)}
+.hero-svc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.hero-svc-card:hover img{transform:scale(1.06)}
+.hero-svc-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(6,12,26,.88) 0%,rgba(6,12,26,.4) 100%);display:flex;align-items:center;padding:.9rem 1.1rem;gap:1rem}
+.hero-svc-icon{width:34px;height:34px;border-radius:9px;background:rgba(37,99,235,.35);border:1px solid rgba(37,99,235,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-svc-icon svg{width:14px;height:14px;stroke:var(--blue-l);fill:none;stroke-width:2}
+.hero-svc-text{flex:1}
+.hero-svc-tag{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-l);display:block;margin-bottom:.15rem}
+.hero-svc-name{font-size:.88rem;font-weight:700;color:#fff;display:block}
+.hero-svc-arrow{font-size:.9rem;color:rgba(255,255,255,.35);transition:color .2s}
+.hero-svc-card:hover .hero-svc-arrow{color:var(--blue-l)}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);border-radius:100px;padding:.35rem .9rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-l);margin-bottom:1.5rem}
 .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-l);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
@@ -127,7 +138,7 @@ nav{background:rgba(6,12,26,.94);backdrop-filter:blur(24px);-webkit-backdrop-fil
 .sec-title{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:300;color:var(--text);line-height:1.15;letter-spacing:-.01em}
 .sec-title em{font-style:italic;background:var(--grad-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .sec-sub{font-size:.9rem;color:var(--muted);line-height:1.75;max-width:480px;margin-top:.75rem}
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .srv-card{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--bdr);background:var(--white);box-shadow:var(--shadow-card);cursor:pointer;transition:all .3s;display:flex;flex-direction:column}
 .srv-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:var(--bdr-s)}
 .srv-card-img{height:200px;overflow:hidden;position:relative;flex-shrink:0}
@@ -299,6 +310,11 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .form-group textarea{resize:vertical}
 .form-success{display:none;background:#ECFDF5;border:1px solid #6EE7B7;border-radius:var(--radius-sm);padding:1rem;font-size:.85rem;color:#065F46;margin-top:1rem;text-align:center}
+/* AI categories */
+.ai-cat-block{margin-bottom:.8rem}
+.ai-cat-title{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);padding:.5rem 0 .5rem;border-bottom:1px solid var(--bdr);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+.ai-cat-title::before{content:'';width:3px;height:12px;background:var(--blue);border-radius:2px;display:inline-block}
+.ai-cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.3rem}
 </style>
 </head>
 <body>
@@ -320,7 +336,6 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
         <button class="drop-link" onclick="showService('financial','bookkeeping')"><span class="drop-link-dot"></span>Cloud Bookkeeping</button>
         <button class="drop-link" onclick="showService('financial','tax')"><span class="drop-link-dot"></span>Australian Tax &amp; BAS</button>
         <button class="drop-link" onclick="showService('financial','payroll')"><span class="drop-link-dot"></span>Payroll &amp; Superannuation</button>
-        <button class="drop-link" onclick="showService('financial','ndis-billing')"><span class="drop-link-dot"></span>NDIS Billing</button>
       </div>
     </li>
     <li class="nav-item">
@@ -330,7 +345,16 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
         <button class="drop-link" onclick="showService('technology','maintenance')"><span class="drop-link-dot"></span>Website Maintenance</button>
         <button class="drop-link" onclick="showService('technology','helpdesk')"><span class="drop-link-dot"></span>IT Help Desk &amp; Support</button>
         <button class="drop-link" onclick="showService('technology','cloud')"><span class="drop-link-dot"></span>Cloud &amp; Cybersecurity</button>
-        <button class="drop-link" onclick="showService('technology','ai')"><span class="drop-link-dot"></span>AI &amp; Automation</button>
+      </div>
+    </li>
+    <li class="nav-item">
+      <button class="nav-btn">Automation <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dropdown">
+        <button class="drop-link" onclick="showService('automation','content')"><span class="drop-link-dot"></span>Content &amp; Creative</button>
+        <button class="drop-link" onclick="showService('automation','sales')"><span class="drop-link-dot"></span>Customer &amp; Sales</button>
+        <button class="drop-link" onclick="showService('automation','process')"><span class="drop-link-dot"></span>Business Process Automation</button>
+        <button class="drop-link" onclick="showService('automation','data')"><span class="drop-link-dot"></span>Data, Reporting &amp; Analytics</button>
+        <button class="drop-link" onclick="showService('automation','ops')"><span class="drop-link-dot"></span>Operations &amp; Productivity</button>
       </div>
     </li>
     <li class="nav-item">
@@ -353,10 +377,8 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
 <div class="page active" id="page-home">
 
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="hero-orb hero-orb-3"></div>
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=85" alt="" aria-hidden="true" loading="eager"/>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-badge"><div class="hero-badge-dot"></div><span>Now serving all of Australia</span></div>
@@ -371,38 +393,40 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
         <p class="hero-proof-text"><strong>200+ Australian businesses</strong> trust us with their operations</p>
       </div>
     </div>
+    <!-- Service preview cards — same visual language as service pages -->
     <div class="hero-right">
-      <div class="hero-dashboard">
-        <div class="dash-header">
-          <span class="dash-title">Practice Overview</span>
-          <span class="dash-live"><span class="dash-live-dot"></span>Live</span>
-        </div>
-        <div class="dash-grid">
-          <div class="dash-card" onclick="showService('financial','corporate')">
-            <div class="dash-card-header">
-              <div class="dash-card-dot"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-              <div class="dash-label">Financial</div>
-            </div>
-            <div class="dash-value">5 Services</div>
-          </div>
-          <div class="dash-card" onclick="showService('technology','web-dev')">
-            <div class="dash-card-header">
-              <div class="dash-card-dot"><svg viewBox="0 0 24 24"><polyline points="6 8 10 12 6 16"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
-              <div class="dash-label">Technology</div>
-            </div>
-            <div class="dash-value">5 Services</div>
-          </div>
-          <div class="dash-card" onclick="showService('advisory','strategy')">
-            <div class="dash-card-header">
-              <div class="dash-card-dot"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-              <div class="dash-label">Advisory</div>
-            </div>
-            <div class="dash-value">4 Services</div>
+      <div class="hero-cards">
+        <div class="hero-svc-card" onclick="showService('financial','corporate')">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80" alt="Financial"/>
+          <div class="hero-svc-overlay">
+            <div class="hero-svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div class="hero-svc-text"><span class="hero-svc-tag">Practice Area 01</span><span class="hero-svc-name">Financial Management &amp; Compliance</span></div>
+            <span class="hero-svc-arrow">→</span>
           </div>
         </div>
-        <div class="dash-footer">
-          <div class="dash-footer-text">Free initial consultation<br><strong style="color:rgba(255,255,255,.72);font-size:.78rem">No lock-in · 1-day response</strong></div>
-          <span class="dash-badge">AUS&nbsp;Compliant</span>
+        <div class="hero-svc-card" onclick="showService('technology','web-dev')">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Technology"/>
+          <div class="hero-svc-overlay">
+            <div class="hero-svc-icon"><svg viewBox="0 0 24 24"><polyline points="6 8 10 12 6 16"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
+            <div class="hero-svc-text"><span class="hero-svc-tag">Practice Area 02</span><span class="hero-svc-name">Technology &amp; Digital</span></div>
+            <span class="hero-svc-arrow">→</span>
+          </div>
+        </div>
+        <div class="hero-svc-card" onclick="showService('automation','content')">
+          <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=700&q=80" alt="Automation"/>
+          <div class="hero-svc-overlay">
+            <div class="hero-svc-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="hero-svc-text"><span class="hero-svc-tag">Practice Area 03</span><span class="hero-svc-name">Automation &amp; Growth</span></div>
+            <span class="hero-svc-arrow">→</span>
+          </div>
+        </div>
+        <div class="hero-svc-card" onclick="showService('advisory','strategy')">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80" alt="Advisory"/>
+          <div class="hero-svc-overlay">
+            <div class="hero-svc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="hero-svc-text"><span class="hero-svc-tag">Practice Area 04</span><span class="hero-svc-name">Business Advisory</span></div>
+            <span class="hero-svc-arrow">→</span>
+          </div>
         </div>
       </div>
     </div>
@@ -428,8 +452,8 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
 <section class="stats-banner">
   <div class="sb-orb-1"></div><div class="sb-orb-2"></div>
   <div class="stats-grid">
-    <div class="stat-item reveal"><span class="stat-n" data-target="3">0</span><span class="stat-l">Practice Areas</span><span class="stat-sub">Financial · Technology<br>Advisory</span></div>
-    <div class="stat-item reveal reveal-d1"><span class="stat-n" data-target="14">0</span><span class="stat-l">Specialisations</span><span class="stat-sub">Deep domain expertise<br>across every division</span></div>
+    <div class="stat-item reveal"><span class="stat-n" data-target="4">0</span><span class="stat-l">Practice Areas</span><span class="stat-sub">Financial · Technology<br>Automation · Advisory</span></div>
+    <div class="stat-item reveal reveal-d1"><span class="stat-n" data-target="18">0</span><span class="stat-l">Specialisations</span><span class="stat-sub">Deep domain expertise<br>across every division</span></div>
     <div class="stat-item reveal reveal-d2"><span class="stat-n">1 Day</span><span class="stat-l">Response Time</span><span class="stat-sub">Guaranteed specialist reply<br>within one business day</span></div>
     <div class="stat-item reveal reveal-d3"><span class="stat-n">100%</span><span class="stat-l">AUS Compliant</span><span class="stat-sub">ATO · ASIC · TPB<br>fully registered &amp; compliant</span></div>
   </div>
@@ -441,7 +465,7 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
     <div class="services-header">
       <div>
         <div class="sec-eyebrow reveal">Our Practice Areas</div>
-        <h2 class="sec-title reveal reveal-d1">Three Divisions.<br><em>Infinite Capability.</em></h2>
+        <h2 class="sec-title reveal reveal-d1">Four Divisions.<br><em>Infinite Capability.</em></h2>
         <p class="sec-sub reveal reveal-d2">Each practice area is led by domain specialists. Click any card to explore the full suite of sub-services.</p>
       </div>
       <button class="btn-primary reveal" onclick="showPage('contact')" style="flex-shrink:0;align-self:flex-end">Book Consultation →</button>
@@ -454,7 +478,7 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
             <div class="srv-num">Practice Area 01</div>
             <div class="srv-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg></div>
             <div class="srv-name">Financial Management &amp; Compliance</div>
-            <p class="srv-brief">Corporate accounting, Xero cloud bookkeeping, Australian tax returns &amp; BAS lodgement, STP Phase 2 payroll, and NDIS billing — handled by CPA-qualified accountants and ATO registered tax agents.</p>
+            <p class="srv-brief">Corporate accounting, Xero cloud bookkeeping, Australian tax returns &amp; BAS lodgement, and STP Phase 2 payroll — handled by CPA-qualified accountants and ATO registered tax agents.</p>
             <div class="srv-more"><span>Explore service</span><div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div></div>
           </div>
         </div>
@@ -466,16 +490,28 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
             <div class="srv-num">Practice Area 02</div>
             <div class="srv-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="6 8 10 12 6 16"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
             <div class="srv-name">Technology &amp; Digital</div>
-            <p class="srv-brief">Website and app development, IT help desk support, Microsoft 365 administration, cloud &amp; cybersecurity, and AI automation — practical solutions built and deployed by engineers, not salespeople.</p>
+            <p class="srv-brief">Website and app development, IT help desk support, Microsoft 365 administration, and cloud &amp; cybersecurity — practical solutions built and deployed by engineers, not salespeople.</p>
             <div class="srv-more"><span>Explore service</span><div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div></div>
           </div>
         </div>
       </div>
-      <div class="srv-card reveal reveal-d2" onclick="showService('advisory','strategy')">
-        <div class="srv-card-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Advisory" loading="lazy"/><div class="srv-card-img-overlay"></div></div>
+      <div class="srv-card reveal reveal-d2" onclick="showService('automation','content')">
+        <div class="srv-card-img"><img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=800&q=80" alt="Automation" loading="lazy"/><div class="srv-card-img-overlay"></div></div>
         <div class="srv-card-body">
           <div class="srv-card-inner">
             <div class="srv-num">Practice Area 03</div>
+            <div class="srv-icon-wrap"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="srv-name">Automation &amp; Growth</div>
+            <p class="srv-brief">Content creation, customer &amp; sales systems, workflow automation, live reporting dashboards, and operational efficiency — five specialist divisions working as one.</p>
+            <div class="srv-more"><span>Explore service</span><div class="srv-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="srv-card reveal reveal-d3" onclick="showService('advisory','strategy')">
+        <div class="srv-card-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Advisory" loading="lazy"/><div class="srv-card-img-overlay"></div></div>
+        <div class="srv-card-body">
+          <div class="srv-card-inner">
+            <div class="srv-num">Practice Area 04</div>
             <div class="srv-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
             <div class="srv-name">Business Advisory</div>
             <p class="srv-brief">Strategic growth planning, process optimisation, Power BI dashboards, and grant writing — advisory that stays in the room through execution, not just the planning workshop.</p>
@@ -565,6 +601,7 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
         <h5>Services</h5>
         <a onclick="showService('financial','corporate')">Financial Management</a>
         <a onclick="showService('technology','web-dev')">Technology &amp; Digital</a>
+        <a onclick="showService('automation','content')">Automation &amp; Growth</a>
         <a onclick="showService('advisory','strategy')">Business Advisory</a>
         <a onclick="showPage('contact')">Contact Us</a>
       </div>
@@ -666,6 +703,7 @@ footer{background:var(--ink);padding:3rem 2rem 1.5rem;color:rgba(255,255,255,.4)
               <option value="">Select a practice area...</option>
               <option>Financial Management &amp; Compliance</option>
               <option>Technology &amp; Digital</option>
+              <option>Automation &amp; Growth</option>
               <option>Business Advisory</option>
             </select>
           </div>
@@ -690,7 +728,7 @@ const SERVICES = {
   financial:{
     tag:'Practice Area 01',
     title:'Financial Management & Compliance',
-    desc:'CPA-qualified accountants and ATO registered tax agents managing your books, tax, payroll, and NDIS billing — so you never have to worry about compliance again.',
+    desc:'CPA-qualified accountants and ATO registered tax agents managing your books, tax, and payroll — so you never have to worry about compliance again.',
     subs:{
       corporate:{
         label:'Corporate Accounting',
@@ -744,25 +782,12 @@ const SERVICES = {
         process:[{step:'01',title:'Setup',desc:'We configure your payroll platform with correct pay rates, award codes, and leave rules.'},{step:'02',title:'Processing',desc:'Pay run prepared and sent to you for approval before funds are released.'},{step:'03',title:'Lodgement',desc:'STP2 filed with the ATO and super contributions submitted via SuperStream.'},{step:'04',title:'Reporting',desc:'Monthly payroll summary with leave balances, cost centre breakdowns, and compliance notes.'}],
         whys:[{icon:'check',title:'STP Phase 2 Compliant',desc:'Every lodgement meets the ATO\'s current STP Phase 2 requirements.'},{icon:'shield',title:'Award Compliance',desc:'We keep award rate schedules current — no underpayment risk for your business.'},{icon:'zap',title:'Approval Workflow',desc:'You approve every pay run before it goes out. No surprises on your bank statement.'}]
       },
-      'ndis-billing':{
-        label:'NDIS Billing',
-        subtitle:'NDIS claims processed on time — every price guide update covered',
-        tagline:'Full claims management for registered NDIS providers, plan managed and agency managed.',
-        heroImg:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1400&q=85',
-        sideImg:'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&q=80',
-        p1:'NDIS billing is complex — price guide updates, plan vs agency managed claims, PRODA access management, and monthly reconciliations all need to run without error. Our NDIS billing team manages the entire claims cycle for registered providers.',
-        p2:'We stay across every NDIS Price Guide update so your rates are always correct. We manage PRODA-related admin on your behalf so your clinical staff can stay focused on participant support rather than portal troubleshooting.',
-        stats:[{n:'PRODA',l:'Registered'},{n:'Current',l:'Price Guide'},{n:'48hr',l:'Claim Processing'},{n:'100%',l:'Audit Trail'}],
-        services:['NDIS Claim Lodgement via PRODA & Portal','Price Guide Rate Auditing','Plan Managed & Agency Managed Billing','Service Agreement Preparation','Monthly Statement Reconciliation','PRODA User Access Administration','Participant Statement Preparation','NDIS Audit Documentation & Support'],
-        process:[{step:'01',title:'Provider Onboarding',desc:'We get PRODA access set up and review your current service agreements and rate schedule.'},{step:'02',title:'Claims Processing',desc:'Claims submitted within 48 hours of service delivery confirmation.'},{step:'03',title:'Monthly Reconciliation',desc:'Every claim matched to a participant statement and plan balance reviewed.'},{step:'04',title:'Audit Readiness',desc:'Full audit trail maintained with supporting documentation for every lodgement.'}],
-        whys:[{icon:'check',title:'Always Current Rates',desc:'We update to each new NDIS Price Guide the day it releases — no billing errors.'},{icon:'shield',title:'PRODA Experts',desc:'We handle the portal so your clinical team doesn\'t lose hours to admin.'},{icon:'zap',title:'48-Hour Turnaround',desc:'Claims submitted within 48 hours of service confirmation — cash flow stays healthy.'}]
-      }
     }
   },
   technology:{
     tag:'Practice Area 02',
     title:'Technology & Digital',
-    desc:'Websites, IT support, Microsoft 365, cloud security, and automation — practical solutions built and maintained by engineers who actually know what they\'re doing.',
+    desc:'Websites, IT support, Microsoft 365, and cloud security — practical solutions built and maintained by engineers who actually know what they\'re doing.',
     subs:{
       'web-dev':{
         label:'Web & App Development',
@@ -815,24 +840,11 @@ const SERVICES = {
         services:['Cloud Migration (Azure / AWS / Microsoft 365)','Multi-Factor Authentication Rollout','Microsoft Defender for Business Configuration','Endpoint Detection & Response (EDR)','Email Security & Anti-Phishing Filtering','Security Awareness Training','Vulnerability Scanning & Remediation','Incident Response & Recovery Planning'],
         process:[{step:'01',title:'Risk Assessment',desc:'We assess your current security posture against the ACSC Essential Eight.'},{step:'02',title:'Remediation Plan',desc:'Prioritised list of fixes — quick wins first, then structural improvements.'},{step:'03',title:'Implementation',desc:'MFA, EDR, email filtering, and cloud configurations deployed with minimal disruption.'},{step:'04',title:'Ongoing Management',desc:'Monthly security reviews, patching, and threat monitoring included.'}],
         whys:[{icon:'check',title:'ACSC Essential Eight',desc:'Our security baseline follows the Australian government\'s own framework — tested and proven.'},{icon:'shield',title:'Zero managed-client breaches',desc:'Not one client on our managed security service has experienced a breach.'},{icon:'zap',title:'Proportionate approach',desc:'We right-size your security investment — no selling enterprise tools to a 20-person firm.'}]
-      },
-      ai:{
-        label:'AI & Automation',
-        subtitle:'Repetitive tasks automated — ROI measurable from day one',
-        tagline:'Zapier, Make, Power Automate, and custom GPT integrations deployed in weeks, not months.',
-        heroImg:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1400&q=85',
-        sideImg:'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=80',
-        p1:'Repetitive manual tasks are costing your team time they should be spending on actual work. We map your workflows, identify the highest-value automation opportunities, and build them — using Zapier, Make, Power Automate, or custom code, depending on what makes the most sense for your tech stack.',
-        p2:'We also build practical AI integrations: document processing with GPT-4, automated email triaging, AI-assisted reporting, and invoice extraction. No buzzwords — just working solutions deployed in weeks, with measurable time savings from day one.',
-        stats:[{n:'10+ Hrs',l:'Saved Per Week (Avg)'},{n:'Zapier',l:'& Make Certified'},{n:'3 Wks',l:'Typical Deployment'},{n:'Day 1',l:'Measurable ROI'}],
-        services:['Business Process Automation (Zapier / Make)','Microsoft Power Automate Workflows','Custom GPT & OpenAI Integrations','Document Processing & Data Extraction AI','Invoice Coding Automation','CRM Automation (HubSpot / Salesforce)','Automated Reporting & Live Dashboards','Chatbot Design & Deployment'],
-        process:[{step:'01',title:'Process Mapping',desc:'We map your current manual workflows and identify the top automation candidates.'},{step:'02',title:'ROI Sizing',desc:'Time and cost estimate for each automation — we only build what pays for itself.'},{step:'03',title:'Build & Test',desc:'Automation built in your environment, tested against real data before go-live.'},{step:'04',title:'Handover',desc:'Documentation and training so your team can manage and extend the automation.'}],
-        whys:[{icon:'check',title:'Tool-agnostic',desc:'We recommend the right platform for your needs — not the one we make the most margin on.'},{icon:'shield',title:'No black boxes',desc:'Every automation is documented and handed over so you\'re not dependent on us forever.'},{icon:'zap',title:'Fast deployment',desc:'Most automations are live within 3 weeks — you see ROI before the next invoice.'}]
       }
     }
   },
   advisory:{
-    tag:'Practice Area 03',
+    tag:'Practice Area 04',
     title:'Business Advisory',
     desc:'Strategy, process improvement, dashboards, and grant writing — advisory that stays in the room through execution, not just the planning workshop.',
     subs:{
@@ -889,6 +901,78 @@ const SERVICES = {
         whys:[{icon:'check',title:'Success-fee model',desc:'For most grant types, we only get paid if your application is successful.'},{icon:'shield',title:'Assessor-focused writing',desc:'We write for the assessor\'s rubric — not for how impressive it sounds to you.'},{icon:'zap',title:'$3.2M secured',desc:'Our clients have received over $3.2M in grant funding in the past three years.'}]
       }
     }
+  },
+  automation:{
+    tag:'Practice Area 03',
+    title:'Automation & Growth',
+    desc:'Content, sales systems, workflow automation, reporting dashboards, and operational efficiency — five specialist divisions helping your business run faster and grow smarter.',
+    subs:{
+      content:{
+        label:'Content & Creative',
+        subtitle:'Professional content that represents your brand — delivered consistently',
+        tagline:'Copywriting, social media, email campaigns, and creative assets built around your brand voice.',
+        heroImg:'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1400&q=85',
+        sideImg:'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=80',
+        p1:'Good content is the difference between a business that gets found and one that doesn\'t. We create written and visual content that reflects your brand accurately, connects with your target audience, and works across every channel you need to be on.',
+        p2:'Every piece of content we produce starts with a brief — your goals, your tone, your audience. We don\'t use templates. Whether it\'s a website rewrite, a monthly blog, or a full email marketing calendar, the content sounds like you, not like everyone else.',
+        stats:[{n:'On-Brand',l:'Every Deliverable'},{n:'48hr',l:'Standard Turnaround'},{n:'SEO',l:'Optimised by Default'},{n:'All',l:'Formats & Channels'}],
+        services:['Website Copywriting & Page Rewrites','Blog & Long-Form Article Writing','Social Media Content Calendars','Email Marketing Campaigns','Product & Service Descriptions','Case Study & Testimonial Writing','Brand Messaging & Tone of Voice Guide','Ad Copy & Campaign Creative','Press Releases & Media Statements','Proposal & Pitch Deck Content'],
+        process:[{step:'01',title:'Brand Brief',desc:'We learn your voice, audience, and goals before writing a single word.'},{step:'02',title:'Content Plan',desc:'Monthly or project content plan agreed upfront — no scope creep surprises.'},{step:'03',title:'Draft & Review',desc:'First draft delivered within 48 hours. Two rounds of revisions included as standard.'},{step:'04',title:'Publish & Measure',desc:'We can schedule and publish across platforms, then report on performance monthly.'}],
+        whys:[{icon:'check',title:'Sounds like you',desc:'We write in your voice, not a generic corporate tone that could belong to any business.'},{icon:'shield',title:'SEO built in',desc:'Every piece of written content is structured and worded to rank on Google — no add-on charge.'},{icon:'zap',title:'48-hour turnaround',desc:'Standard deliverables back to you within 48 hours. Urgent turnaround available.'}]
+      },
+      sales:{
+        label:'Customer & Sales',
+        subtitle:'A sales and customer system that works while you focus on delivery',
+        tagline:'CRM management, lead generation, follow-up sequences, and customer retention — end to end.',
+        heroImg:'https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1400&q=85',
+        sideImg:'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=700&q=80',
+        p1:'Most businesses lose leads not because their product is wrong but because nobody followed up in time. We build and manage the systems that ensure every lead is captured, contacted, and nurtured — without your team having to remember to do it.',
+        p2:'We set up and run your CRM, design your outreach sequences, manage your customer follow-up process, and track conversion at every stage. The result is a pipeline you can see clearly and a customer base that feels looked after.',
+        stats:[{n:'CRM',l:'Setup & Management'},{n:'24hr',l:'Lead Response Time'},{n:'Multi',l:'Channel Coverage'},{n:'Full',l:'Funnel Visibility'}],
+        services:['CRM Setup & Ongoing Management (HubSpot / Salesforce / Zoho)','Lead Generation & Pipeline Management','Email Outreach & Follow-Up Sequences','Customer Onboarding Flows','Sales Process Documentation & Training','Review & Feedback Collection Campaigns','Customer Retention Programs','Live Chat Setup & Management','Loyalty Program Design','Win-Back Campaign Management'],
+        process:[{step:'01',title:'Pipeline Review',desc:'We map your current lead journey from first contact to closed deal and find every gap.'},{step:'02',title:'CRM Setup',desc:'CRM configured with your pipeline stages, automations, and reporting dashboard.'},{step:'03',title:'Sequence Build',desc:'Follow-up sequences written and loaded — prospects are contacted on schedule automatically.'},{step:'04',title:'Ongoing Management',desc:'Weekly pipeline updates, monthly reports, and quarterly strategy reviews.'}],
+        whys:[{icon:'check',title:'No leads fall through the cracks',desc:'Every enquiry is logged, assigned, and followed up — automatically and on time.'},{icon:'shield',title:'CRM-certified team',desc:'We hold HubSpot and Salesforce certifications and set up your CRM to suit your actual sales process.'},{icon:'zap',title:'Full funnel visibility',desc:'You see exactly where every lead is at every stage — no more guessing what\'s in the pipeline.'}]
+      },
+      process:{
+        label:'Business Process Automation',
+        subtitle:'Manual workflows replaced with systems that run themselves',
+        tagline:'Workflow design, document routing, form processing, and cross-tool integrations — deployed in days.',
+        heroImg:'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1400&q=85',
+        sideImg:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80',
+        p1:'Every business has workflows that shouldn\'t require a human to manage them — approvals, notifications, data entry, file routing, report distribution. We identify these, design the automated version, and implement it using the tools that best fit your existing setup.',
+        p2:'We\'re platform-agnostic. Whether your business uses Microsoft tools, Google Workspace, or a combination of third-party platforms, we build the connections that make information flow automatically — reducing errors, saving time, and removing the bottlenecks that slow your team down.',
+        stats:[{n:'80%',l:'Time Saved on Manual Tasks'},{n:'Zero',l:'Data Entry Errors'},{n:'Days',l:'Not Weeks to Deploy'},{n:'Full',l:'Audit Trail Maintained'}],
+        services:['End-to-End Workflow Design & Implementation','Document Routing & Approval Workflows','Form Digitisation & Auto-Processing','Invoice & Receipt Capture','Data Entry Elimination','Scheduled Reporting & Distribution','Cross-Platform Tool Integration (Zapier / Make)','Recurring Task & Reminder Automation','Compliance Monitoring Workflows','Notification & Alert System Setup'],
+        process:[{step:'01',title:'Workflow Audit',desc:'We map your current manual processes and identify the highest-value automation targets.'},{step:'02',title:'Design',desc:'Automated workflow designed with clear ownership, triggers, and fallback conditions.'},{step:'03',title:'Build & Test',desc:'Built in your environment, tested against real data, with your team signing off before go-live.'},{step:'04',title:'Handover',desc:'Full documentation and a brief training session so your team can manage and extend it.'}],
+        whys:[{icon:'check',title:'Platform-agnostic',desc:'We work with your existing tools — Microsoft, Google, or any third-party platforms you\'re already using.'},{icon:'shield',title:'No black boxes',desc:'Every automation is documented and handed over. You\'re never dependent on us to keep it running.'},{icon:'zap',title:'Days to deploy',desc:'Most workflow automations are live within 3–5 business days of the brief being signed off.'}]
+      },
+      data:{
+        label:'Data, Reporting & Analytics',
+        subtitle:'Your numbers turned into decisions — not more spreadsheets',
+        tagline:'Custom dashboards, automated reports, and performance analytics connected to your live data sources.',
+        heroImg:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=85',
+        sideImg:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80',
+        p1:'Most businesses are sitting on data they\'re not using. Sales figures in one system, marketing metrics in another, financial data in a third — and a weekly report that someone manually compiles every Friday afternoon. We fix that.',
+        p2:'We connect your data sources, build dashboards that update in real time, and automate the reports your leadership team needs. The goal is one place where your business performance is visible at a glance — accurate, current, and requiring no manual effort to maintain.',
+        stats:[{n:'Live',l:'Data Connections'},{n:'Single',l:'Source of Truth'},{n:'Auto',l:'Report Delivery'},{n:'All',l:'Data Sources Supported'}],
+        services:['Custom Dashboard Design & Build (Power BI / Looker Studio)','Live Data Source Integration','Automated Report Scheduling & Distribution','KPI Framework Design','Sales & Revenue Performance Tracking','Marketing Metrics & Campaign Analytics','Financial Performance Dashboards','Operational Metrics & SLA Monitoring','Data Cleaning & Structuring','Executive Summary Report Packs'],
+        process:[{step:'01',title:'Data Audit',desc:'We review your existing data sources, quality, and what\'s currently being measured versus what matters.'},{step:'02',title:'Dashboard Design',desc:'Wireframe and layout agreed before any build work starts — you approve the structure first.'},{step:'03',title:'Build & Connect',desc:'Dashboard built, data sources connected, and tested against historical data for accuracy.'},{step:'04',title:'Training & Handover',desc:'Full team training so you can update, filter, and extend the dashboard without coming back to us.'}],
+        whys:[{icon:'check',title:'One source of truth',desc:'All your data in one place, always current — no more conflicting figures from different spreadsheets.'},{icon:'shield',title:'You own everything',desc:'Dashboards built in your environment. Not locked to our platform or subscription.'},{icon:'zap',title:'Automated delivery',desc:'Reports land in the right inboxes on schedule — no manual compilation on a Friday afternoon.'}]
+      },
+      ops:{
+        label:'Operations & Productivity',
+        subtitle:'More output from your existing team — without adding headcount',
+        tagline:'Productivity audits, project management setup, SOPs, knowledge bases, and team efficiency systems.',
+        heroImg:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=85',
+        sideImg:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80',
+        p1:'Operational inefficiency is expensive — and it\'s usually invisible until someone actually maps what\'s happening day to day. We audit how your team works, identify where time is being lost, and redesign the systems, structures, and tools that support how work gets done.',
+        p2:'This isn\'t about making people work harder. It\'s about removing the friction that slows capable people down — unclear priorities, missing documentation, too many tools, or meetings that should be emails. The result is a team that delivers more without burning out.',
+        stats:[{n:'Avg 28%',l:'Productivity Increase'},{n:'Full',l:'SOP Library Delivered'},{n:'Team',l:'Training Included'},{n:'4 Wks',l:'Typical Engagement'}],
+        services:['Team Productivity Audit','Tool & Software Stack Review','Project Management Platform Setup (Asana / Monday / Notion)','Task Management & Delegation Systems','Standard Operating Procedure (SOP) Writing','Internal Knowledge Base Creation','Meeting Structure Optimisation','Workload Balancing & Capacity Planning','Onboarding & Training System Design','Internal Communication Workflow Design'],
+        process:[{step:'01',title:'Ops Audit',desc:'We spend a week observing how your team actually works — not how the org chart says it works.'},{step:'02',title:'Gap Report',desc:'Written report of inefficiencies, tool overlaps, and the top five improvements to prioritise.'},{step:'03',title:'Implementation',desc:'Systems redesigned, tools configured, SOPs written, and team trained in the new way of working.'},{step:'04',title:'Review',desc:'30-day and 90-day check-ins to measure output, address adoption issues, and lock in the gains.'}],
+        whys:[{icon:'check',title:'Bottom-up diagnosis',desc:'We talk to the people doing the work, not just management — that\'s where the real problems are.'},{icon:'shield',title:'SOP library included',desc:'Every engagement delivers a documented SOP library your team can reference and onboard from.'},{icon:'zap',title:'Avg 28% productivity gain',desc:'Our clients typically see measurable output improvements within 90 days of implementation.'}]
+      }
+    }
   }
 };
 
@@ -941,10 +1025,19 @@ function showService(serviceId,subId){
         <div>
           <p class="sub-p">${sub.p1}</p>
           <p class="sub-p">${sub.p2}</p>
-          <div class="sub-section-title">What's Included</div>
-          <div class="sub-svc-grid">
-            ${sub.services.map(sv=>`<div class="sub-svc-item">${sv}</div>`).join('')}
-          </div>
+          ${sub.categories
+            ? sub.categories.map(cat=>`
+                <div class="ai-cat-block">
+                  <div class="ai-cat-title">${cat.title}</div>
+                  <div class="sub-svc-grid ai-cat-grid">
+                    ${cat.items.map(item=>`<div class="sub-svc-item">${item}</div>`).join('')}
+                  </div>
+                </div>`).join('')
+            : `<div class="sub-section-title">What's Included</div>
+               <div class="sub-svc-grid">
+                 ${sub.services.map(sv=>`<div class="sub-svc-item">${sv}</div>`).join('')}
+               </div>`
+          }
         </div>
         <div>
           <img class="sub-aside-img" src="${sub.sideImg}" alt="${sub.label}" loading="lazy"/>
